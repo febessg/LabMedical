@@ -4,21 +4,10 @@ import { InputComponent } from "../Input/Input.component";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/auth/auth.context";
+import { UserService } from "../../../services/User/User.service";
 
 export const FormLoginComponent = () => {
-    const users = [
-        {
-            id: 1,
-            email: 'fernanda-bess@hotmail.com',
-            password: '12345678'
-        },
-        {
-            id: 2,
-            email: 'eduardo.mm@icloud.com',
-            password: '09876543'
-        }
-    ]
-
+   
     const {
         register,
         handleSubmit,
@@ -33,8 +22,7 @@ export const FormLoginComponent = () => {
     const submitForm = (data) => {
         const {email, password} = data;
 
-        const user = users.find(u => u.email === email)
-        console.log(user)
+        const user = UserService.ShowByEmail(email);
 
         if(!user) {
             alert('Usuário não cadastrado');
@@ -50,7 +38,7 @@ export const FormLoginComponent = () => {
             user,
             isLogged: true
         });
-        navigate('/')
+        navigate('/');
     }
 
     return (
