@@ -10,16 +10,19 @@ export const Form = styled.form`
     border-radius: 10px;
     background: #FFF;
     box-shadow: 0px 5px 10px 5px rgba(185, 185, 185, 0.25);
+    min-width: 320px;
 `
 
 export const Header = styled.div`
     align-self: center;
+    width: 100%;
 `
 
 export const Title = styled.legend`
     color: #159976;
     font-size: 2rem;
     font-weight: 700;
+    text-align: center;
 `
 
 export const InputGroup = styled.div`
@@ -29,6 +32,7 @@ export const InputGroup = styled.div`
     align-items: center;
     gap: 10px;
     padding: 10px;
+    width: 100%;
 `
 
 export const Button = styled.button`
