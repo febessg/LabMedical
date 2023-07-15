@@ -1,28 +1,75 @@
+import { useForm } from "react-hook-form";
 import { InputComponent } from "../Input/Input.component";
 import * as Styled from './SignUp.style';
+import { useNavigate } from "react-router-dom";
+import { UserService } from "../../../services/User/User.service";
 
 export const FormSignUpComponent = () => {
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: {errors}
+    } = useForm();
+
+    const navigate = useNavigate();
+
+    const submitForm = (data) => {
+        const {email, password, repeatPassword} = data;
+        console.log(data);
+
+        if (UserService.ShowByEmail(email)) {
+            alert('Usuário já cadastrado');
+            reset();
+            return
+        }
+
+        if (password !== repeatPassword) {
+            alert('As senhas não conferem');
+            reset();
+            return
+        }
+ 
+        UserService.Create(data);
+        navigate('/login')
+    }
+
     return (
-        <Styled.Form>
+        <Styled.Form onSubmit={handleSubmit(submitForm)}>
             <Styled.Title>Cadastre-se</Styled.Title>
             <Styled.InputGroup>
                 <InputComponent
                     type="email"
                     id="email"
                     placeholder="E-mail"
+                    register={{...register('email', {
+                        required: true,
+                        validate:  {matchPath: (v) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v)}
+                    })}}
+                    error={errors.email}
                 />
                 <InputComponent
                     type="password"
                     id="password"
                     placeholder="Senha"
+                    register={{...register('password', {
+                        required: true,
+                        minLength: 8
+                    })}}
+                    error={errors.password}
                 />
                 <InputComponent
-                type="password"
-                id="repeatPassword"
-                placeholder="Digite sua senha novamente"
+                    type="password"
+                    id="repeatPassword"
+                    placeholder="Digite sua senha novamente"
+                    register={{...register('repeatPassword', {
+                        required: true,
+                        minLength: 8
+                    })}}
+                    error={errors.password}
                 />
             </Styled.InputGroup>
-            <Styled.Button type="submit">Cadastrar</Styled.Button>
+            <Styled.Button $active={!errors.email && !errors.password} type="submit" disabled={errors.email || errors.password}>Cadastrar</Styled.Button>
         </Styled.Form>
     )
 }
