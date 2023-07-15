@@ -7,10 +7,7 @@ export const Form = styled.form`
     justify-content: center;
     align-items: flex-start;
     gap: 16px;
-    border-radius: 10px;
-    background: #FFF;
-    box-shadow: 0px 5px 10px 5px rgba(185, 185, 185, 0.25);
-    min-width: 320px;
+    min-width: 400px;
 `
 
 export const Header = styled.div`
@@ -55,12 +52,41 @@ export const Button = styled.button`
     }
 `
 
-export const Action = styled.a`
-    align-self: center;
+export const Action = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+`
+
+export const EsqueceuSenha = styled.a`
+    text-align: center;
     text-decoration: none;
     color: #159976;
+    cursor: pointer;
+    font-size: 0.9rem;
+
+    width: 100%;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #D2D0DC;
 
     &:hover {
-        font-weight: 600;
+       color: #159976a2;
+    }
+`
+
+export const SemConta = styled.p`
+    padding: 1rem 0.5rem;
+    font-size: 0.9rem;
+`
+
+export const Cadastro = styled.a`
+    text-decoration: none;
+    color: #159976;
+    cursor: pointer;
+
+    &:hover {
+       color: #159976a2;
     }
 `

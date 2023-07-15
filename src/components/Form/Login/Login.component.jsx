@@ -4,16 +4,41 @@ import { InputComponent } from "../Input/Input.component";
 import { useForm } from "react-hook-form";
 
 export const FormLoginComponent = () => {
+    const users = [
+        {
+            id: 1,
+            email: 'fernanda-bess@hotmail.com',
+            password: '12345678'
+        },
+        {
+            id: 2,
+            email: 'eduardo.mm@icloud.com',
+            password: '09876543'
+        }
+    ]
+
     const {
         register,
         handleSubmit,
+        reset,
         formState: {errors}
     } = useForm();
     
     const navigate = useNavigate();
 
     const submitForm = (data) => {
-        console.log(data)
+        const {email, password} = data;
+
+        const user = users.find(u => u.email === email)
+        console.log(user)
+
+        if(!user) {
+            alert('Usuário não cadastrado');
+            reset();
+            return
+        }
+
+        password === user.password ? redirectToHome() : alert('Usuário ou senha inválidos.')
     }
     
     const redirectToHome = () => {
@@ -50,7 +75,10 @@ export const FormLoginComponent = () => {
                 />
             </Styled.InputGroup>
             <Styled.Button $active={!errors.email && !errors.password} type="submit" disabled={errors.email || errors.password}>Entrar</Styled.Button>
-            <Styled.Action href="#">Esqueceu sua senha?</Styled.Action>
+            <Styled.Action>
+                <Styled.EsqueceuSenha>Esqueceu sua senha?</Styled.EsqueceuSenha>
+                <Styled.SemConta>Ainda não tem uma conta? <Styled.Cadastro>Cadastre-se</Styled.Cadastro></Styled.SemConta>
+            </Styled.Action>
         </Styled.Form>
     )
 }

@@ -20,7 +20,7 @@ export const Input = styled.input`
     align-items: flex-start;
     align-self: stretch;
     border-radius: 0.3rem;
-    border: 1px solid ${({$color}) => {return $color === 'danger' ? '#BE2E2E' : '#159976'}};
+    border: 1px solid ${({$color}) => {return $color === 'danger' ? '#BE2E2E' : '#D2D0DC'}};
     width: 100%;
     padding: .5rem;
 
