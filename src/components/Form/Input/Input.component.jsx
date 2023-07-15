@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as Styled from './Input.style';
 import {MdVisibility, MdVisibilityOff} from 'react-icons/md';
 
-export const InputComponent = ({label, type, id, placeholder}) => {
+export const InputComponent = ({label, type, id, placeholder, register, error}) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleShowPassword = () => {
@@ -12,13 +12,13 @@ export const InputComponent = ({label, type, id, placeholder}) => {
 
     return (
         <Styled.InputGroup>
-                    <Styled.Label htmlFor={id}>{label}</Styled.Label>
+                    <Styled.Label $color={error && 'danger'} htmlFor={id}>{label}</Styled.Label>
 
                    {type !== 'textarea' &&
                         <Styled.InputContainer>
-                            <Styled.Input type={showPassword ? 'text' : type} id={id} placeholder={placeholder} />
+                            <Styled.Input $color={error && 'danger'}  type={showPassword ? 'text' : type} id={id} placeholder={placeholder} {...register}/>
                             {type === 'password' &&
-                                <Styled.Icon type='button' onClick={handleShowPassword}>
+                                <Styled.Icon $color={error && 'danger'}  type='button' onClick={handleShowPassword}>
                                     {!showPassword ? <MdVisibility/> : <MdVisibilityOff/>}
                                 </Styled.Icon>
                             }
@@ -26,7 +26,7 @@ export const InputComponent = ({label, type, id, placeholder}) => {
                     }
 
                     {type === 'textarea' &&
-                        <Styled.TextArea id={id} placeholder={placeholder}/>
+                        <Styled.TextArea $color={error && 'danger'}  id={id} placeholder={placeholder} {...register}/>
                     }
         </Styled.InputGroup>
     )
@@ -36,5 +36,7 @@ InputComponent.propTypes = {
     label: PropTypes.string,
     type: PropTypes.string,
     id: PropTypes.string.isRequired,
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
+    register: PropTypes.any,
+    error: PropTypes.any
 }

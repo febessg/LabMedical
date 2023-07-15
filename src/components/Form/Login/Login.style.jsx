@@ -48,6 +48,8 @@ export const Button = styled.button`
     font-size: 1rem;
     font-weight: 400;
 
+    opacity: ${({$active}) => {return $active ? 1 : 0.5}};
+
     &:disabled {
         cursor: not-allowed;
     }

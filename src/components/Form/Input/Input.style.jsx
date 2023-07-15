@@ -10,7 +10,7 @@ export const InputGroup = styled.div`
 
 export const Label = styled.label`
     align-self: flex-start;
-    color: #159976;
+    color: ${({$color}) => {return $color === 'danger' ? '#BE2E2E' : '#159976'}};
     font-size: 1rem;
     font-weight: 400;
 `
@@ -20,13 +20,13 @@ export const Input = styled.input`
     align-items: flex-start;
     align-self: stretch;
     border-radius: 0.3rem;
-    border: 1px solid #D2D0DC;
+    border: 1px solid ${({$color}) => {return $color === 'danger' ? '#BE2E2E' : '#159976'}};
     width: 100%;
     padding: .5rem;
 
     &:focus {
         background-color: #d2d0dc65;
-        border: 1px solid #159976;
+        border: 1px solid ${({$color}) => {return $color === 'danger' ? '#BE2E2E' : '#159976'}};
     }
 `
 
@@ -42,7 +42,7 @@ export const Icon = styled.button`
     cursor: pointer;
     background-color: transparent;
     border: 0;
-    color: #159976;
+    color: ${({$color}) => {return $color === 'danger' ? '#BE2E2E' : '#159976'}};
 `
 
 export const TextArea = styled.textarea`
@@ -50,7 +50,12 @@ export const TextArea = styled.textarea`
     align-items: flex-start;
     align-self: stretch;
     border-radius: 0.3rem;
-    border: 1px solid #D2D0DC;
+    border: 1px solid ${({$color}) => {return $color === 'danger' ? '#BE2E2E' : '#159976'}};
     width: 100%;
     padding: .5rem;
+
+    &:focus {
+        background-color: #d2d0dc65;
+        border: 1px solid ${({$color}) => {return $color === 'danger' ? '#BE2E2E' : '#159976'}};
+    }
 `
