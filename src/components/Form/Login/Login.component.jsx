@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import * as Styled from './Login.style';
 import { InputComponent } from "../Input/Input.component";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../../../contexts/auth/auth.context";
 
 export const FormLoginComponent = () => {
     const users = [
@@ -26,6 +28,8 @@ export const FormLoginComponent = () => {
     
     const navigate = useNavigate();
 
+    const {setAuth} = useContext(AuthContext);
+
     const submitForm = (data) => {
         const {email, password} = data;
 
@@ -38,11 +42,15 @@ export const FormLoginComponent = () => {
             return
         }
 
-        password === user.password ? redirectToHome() : alert('Usuário ou senha inválidos.')
+        password === user.password ? redirectToHome(user) : alert('Usuário ou senha inválidos.')
     }
     
-    const redirectToHome = () => {
-        navigate('/home')
+    const redirectToHome = (user) => {
+        setAuth({
+            user,
+            isLogged: true
+        });
+        navigate('/')
     }
 
     return (
