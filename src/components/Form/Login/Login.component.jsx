@@ -41,6 +41,10 @@ export const FormLoginComponent = () => {
         navigate('/');
     }
 
+    const redirectSignUp = () => {
+        navigate('/signup');
+    }
+
     return (
         <Styled.Form onSubmit={handleSubmit(submitForm)}>
             <Styled.Header>
@@ -73,7 +77,7 @@ export const FormLoginComponent = () => {
             <Styled.Button $active={!errors.email && !errors.password} type="submit" disabled={errors.email || errors.password}>Entrar</Styled.Button>
             <Styled.Action>
                 <Styled.EsqueceuSenha>Esqueceu sua senha?</Styled.EsqueceuSenha>
-                <Styled.SemConta>Ainda não tem uma conta? <Styled.Cadastro>Cadastre-se</Styled.Cadastro></Styled.SemConta>
+                <Styled.SemConta>Ainda não tem uma conta? <Styled.Cadastro onClick={redirectSignUp}>Cadastre-se</Styled.Cadastro></Styled.SemConta>
             </Styled.Action>
         </Styled.Form>
     )

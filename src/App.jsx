@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { LoginPage } from "./pages/Login/Login.page"
 import { HomePage } from "./pages/Home/Home.page"
 import { LocalStorageService } from "./services/User/LocalStorage.service"
+import { SignUpPage } from "./pages/SignUp/SignUp.page"
 
 if (!LocalStorageService.get('users')) {
   LocalStorageService.set('users', [
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/" element={<HomePage/>}/>
+        <Route path="/signup" element={<SignUpPage/>}/>
         <Route path="*" element={<><p>Página não existe</p></>}/>
       </Routes>
     </Router>
