@@ -6,8 +6,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LoginPage/>}/>
-        <Route path="/home" element={<HomePage/>}/>
+        <Route path="/login" element={<LoginPage/>}/>
+        <Route path="/" element={<HomePage/>}/>
+        <Route path="*" element={<><p>Página não existe</p></>}/>
       </Routes>
     </Router>
   )
