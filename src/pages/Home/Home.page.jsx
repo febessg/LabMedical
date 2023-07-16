@@ -5,7 +5,7 @@ import { ToolbarComponent } from "../../components/Toolbar/Toolbar.component";
 
 export const HomePage = () => {
     const {auth} = useContext(AuthContext);
-
+    
     const render = () => {
         return (
         <>
