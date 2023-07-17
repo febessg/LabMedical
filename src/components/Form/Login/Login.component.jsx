@@ -27,18 +27,17 @@ export const FormLoginComponent = () => {
 
         const user = UserService.ShowByEmail(email);
 
-        setUser(user);
-
         if(!user) {
             alert('Usuário não cadastrado');
             reset();
             return
         }
-
+        
         password === user.password ? redirectToHome(user) : alert('Usuário ou senha inválidos.')
     }
     
     const redirectToHome = (user) => {
+        setUser(user);
         setAuth({
             user,
             isLogged: true

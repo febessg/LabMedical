@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const ToolbarContext = createContext({
     toolbar: {
         title: "",
-        user: {}
+        userName: ''
     },
     setToolbar: () => {}
 });
@@ -11,7 +11,7 @@ export const ToolbarContext = createContext({
 export const ToolbarProvider = ({children}) => {
     const [toolbar, setToolbar] = useState({
         title: "",
-        user: {}
+        userName: ''
     })
     return (
         <ToolbarContext.Provider value={{toolbar, setToolbar}}>

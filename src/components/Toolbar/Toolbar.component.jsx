@@ -11,7 +11,7 @@ export const ToolbarComponent = () => {
         <Styled.Toolbar>
             <Styled.Title>{toolbar.title}</Styled.Title>
             <Styled.ToolsContainer>
-                <Styled.UserName>{toolbar.user.name}</Styled.UserName>
+                <Styled.UserName>{toolbar.userName}</Styled.UserName>
                 <Styled.Icons>
                     <Styled.UserPic><PiUserCircleFill /></Styled.UserPic>
                     <Styled.Logout><FiLogOut/></Styled.Logout>
