@@ -39,6 +39,15 @@ export const FormSignUpComponent = () => {
             <Styled.Title>Cadastre-se</Styled.Title>
             <Styled.InputGroup>
                 <InputComponent
+                    type="text"
+                    id="name"
+                    placeholder="Primeiro nome"
+                    register={{...register('name', {
+                        required: true
+                    })}}
+                    error={errors.name}
+                />
+                <InputComponent
                     type="email"
                     id="email"
                     placeholder="E-mail"
@@ -69,7 +78,7 @@ export const FormSignUpComponent = () => {
                     error={errors.password}
                 />
             </Styled.InputGroup>
-            <Styled.Button $active={!errors.email && !errors.password} type="submit" disabled={errors.email || errors.password}>Cadastrar</Styled.Button>
+            <Styled.Button $active={!errors.email && !errors.password && !errors.name} type="submit" disabled={errors.email || errors.password || errors.name}>Cadastrar</Styled.Button>
         </Styled.Form>
     )
 }
