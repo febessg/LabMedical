@@ -17,6 +17,7 @@ export const Title = styled.h1`
     font-weight: 600;
     font-size: 1.5rem;
     color: #FFF;
+    text-transform: uppercase;
 `
 
 export const UserName = styled.p`
