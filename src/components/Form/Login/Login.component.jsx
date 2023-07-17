@@ -5,8 +5,11 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/auth/auth.context";
 import { UserService } from "../../../services/User/User.service";
+import { UserContext } from "../../../contexts/User/User.context";
 
 export const FormLoginComponent = () => {
+
+    const {setUser} = useContext(UserContext);
    
     const {
         register,
@@ -23,6 +26,8 @@ export const FormLoginComponent = () => {
         const {email, password} = data;
 
         const user = UserService.ShowByEmail(email);
+
+        setUser(user);
 
         if(!user) {
             alert('Usuário não cadastrado');
