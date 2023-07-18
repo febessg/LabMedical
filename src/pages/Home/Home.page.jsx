@@ -9,6 +9,7 @@ import { StatisticCardComponent } from "../../components/StatisticCard/Statistic
 import {FaHandHoldingMedical, FaNotesMedical} from 'react-icons/fa';
 import {BsFillPeopleFill} from 'react-icons/bs';
 import * as Styled from "./Home.style";
+import { PatientCardComponent } from "../../components/PatientCard/PatientCard.component";
 
 
 export const HomePage = () => {
@@ -47,6 +48,9 @@ export const HomePage = () => {
                 <Styled.Button>Buscar</Styled.Button>
             </Styled.Search>
             <div className="search-results">
+                <PatientCardComponent name='Jane Doe' age={25} contact="(48) 9999-9999" healthInsurance='Unimed'/>
+                <PatientCardComponent name='Jane Doe' age={25} contact="(48) 9999-9999" healthInsurance='Unimed'/>
+                <PatientCardComponent name='Jane Doe' age={25} contact="(48) 9999-9999" healthInsurance='Unimed'/>
             </div>
         </Styled.HomePage>
         </>
