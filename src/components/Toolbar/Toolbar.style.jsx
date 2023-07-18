@@ -10,11 +10,25 @@ export const Toolbar = styled.div`
     min-height: 3rem;
     padding: 0 1rem;
     background-color: #159976;
+`
 
+export const LeftContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`
+
+export const OpenMenu = styled.button`
+    height: 24px;
+    background-color: transparent;
+    border: 0;
+    color: #FFF;
+    font-size: 1.5rem;
+    cursor: pointer;
 `
 
 export const Title = styled.h1`
-    padding-left: 0.5rem;
+    padding-left: 1rem;
     font-weight: 600;
     font-size: 1.2rem;
     color: #FFF;
@@ -31,8 +45,8 @@ export const ToolsContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-left: 0.5rem;
     gap: 15px;
+    padding-right: 1rem ;
 `
 
 export const Icons = styled.div`
