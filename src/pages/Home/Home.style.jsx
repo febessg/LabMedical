@@ -11,7 +11,8 @@ export const Titles = styled.h2`
 export const Statistics = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 2rem;
     margin: 1rem 0;
 `
 
