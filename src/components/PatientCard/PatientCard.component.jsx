@@ -1,18 +1,22 @@
 import {BsPersonSquare} from 'react-icons/bs';
 import PropTypes from 'prop-types';
+import * as Styled from './PatientCard.style';
 
 export const PatientCardComponent = ({name, age, contact, healthInsurance}) => {
     return (
-        <div className='patient-card'>
-            <span><BsPersonSquare/></span>
-            <div className="PatientInfo">
-                <h2>{name}</h2>
-                <h4>{age}</h4>
-                <h2>{contact}</h2>
-                <h2>{healthInsurance}</h2>
-            </div>
-            <button>Ver mais</button>
-        </div>
+        <Styled.PatientCard>
+            <Styled.TopBar></Styled.TopBar>
+            <Styled.Icon><BsPersonSquare/></Styled.Icon>
+            <Styled.PatientInfo>
+                <Styled.PatientName>{name}</Styled.PatientName>
+                <Styled.PatientAge>{age} anos</Styled.PatientAge>
+            </Styled.PatientInfo>
+                <Styled.PatientInfo>
+                    <Styled.PatientContact>{contact}</Styled.PatientContact>
+                    <Styled.HealthInsurance>{healthInsurance}</Styled.HealthInsurance>
+                </Styled.PatientInfo>
+            <Styled.Button>Ver mais</Styled.Button>
+        </Styled.PatientCard>
     )
 }
 

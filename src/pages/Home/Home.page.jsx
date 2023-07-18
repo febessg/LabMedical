@@ -48,9 +48,9 @@ export const HomePage = () => {
                 <Styled.Button>Buscar</Styled.Button>
             </Styled.Search>
             <div className="search-results">
-                <PatientCardComponent/>
-                <PatientCardComponent/>
-                <PatientCardComponent/>
+                <PatientCardComponent name='Jane Doe' age={25} contact="(48) 9999-9999" healthInsurance='Unimed'/>
+                <PatientCardComponent name='Jane Doe' age={25} contact="(48) 9999-9999" healthInsurance='Unimed'/>
+                <PatientCardComponent name='Jane Doe' age={25} contact="(48) 9999-9999" healthInsurance='Unimed'/>
             </div>
         </Styled.HomePage>
         </>
