@@ -6,14 +6,17 @@ export const HomePage = styled.div`
 
 export const Titles = styled.h2`
     color: #25232F;
+    font-size: 1.5rem;
 `
 
 export const Statistics = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 2rem;
-    margin: 1rem 0;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 `
 
 export const Search = styled.div`
@@ -21,6 +24,7 @@ export const Search = styled.div`
     flex-direction: row;
     align-items: flex-end;
     gap: 0.5rem;
+    margin-top: 0.5rem;
 `
 
 export const Button = styled.button`
@@ -32,4 +36,13 @@ export const Button = styled.button`
     cursor: pointer;
     height: 35px;
     padding: 0 0.5rem;
+`
+export const SearchResults = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 2rem 0;
 `

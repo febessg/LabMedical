@@ -47,11 +47,11 @@ export const HomePage = () => {
                 />
                 <Styled.Button>Buscar</Styled.Button>
             </Styled.Search>
-            <div className="search-results">
+            <Styled.SearchResults>
                 <PatientCardComponent name='Jane Doe' age={25} contact="(48) 9999-9999" healthInsurance='Unimed'/>
                 <PatientCardComponent name='Jane Doe' age={25} contact="(48) 9999-9999" healthInsurance='Unimed'/>
                 <PatientCardComponent name='Jane Doe' age={25} contact="(48) 9999-9999" healthInsurance='Unimed'/>
-            </div>
+            </Styled.SearchResults>
         </Styled.HomePage>
         </>
         )

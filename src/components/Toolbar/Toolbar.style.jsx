@@ -5,8 +5,9 @@ export const Toolbar = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap-reverse;
     width: 100%;
-    height: 3rem;
+    min-height: 3rem;
     padding: 0 1rem;
     background-color: #159976;
 
@@ -15,9 +16,11 @@ export const Toolbar = styled.div`
 export const Title = styled.h1`
     padding-left: 0.5rem;
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #FFF;
     text-transform: uppercase;
+    line-height: 1.3rem;
+    margin: 0.5rem 0;
 `
 
 export const UserName = styled.p`
@@ -28,6 +31,7 @@ export const ToolsContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding-left: 0.5rem;
     gap: 15px;
 `
 
