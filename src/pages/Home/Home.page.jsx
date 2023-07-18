@@ -5,7 +5,11 @@ import { ToolbarComponent } from "../../components/Toolbar/Toolbar.component";
 import { UserContext } from "../../contexts/User/User.context";
 import { ToolbarContext } from "../../contexts/Toolbar/Toolbar.context";
 import { InputComponent } from "../../components/Form/Input/Input.component";
+import { StatisticCardComponent } from "../../components/StatisticCard/StatisticCard.component";
+import {FaHandHoldingMedical, FaNotesMedical} from 'react-icons/fa';
+import {BsFillPeopleFill} from 'react-icons/bs';
 import * as Styled from "./Home.style";
+
 
 export const HomePage = () => {
     const {auth} = useContext(AuthContext);
@@ -29,9 +33,9 @@ export const HomePage = () => {
         <Styled.HomePage>
             <Styled.Titles>Estatísticas do sistema</Styled.Titles>
             <Styled.Statistics>
-                <div>Card 1</div>
-                <div>Card 2</div>
-                <div>Card 3</div>
+                <StatisticCardComponent icon={<BsFillPeopleFill/>} value={5} title="Pacientes"/>
+                <StatisticCardComponent icon={<FaHandHoldingMedical/>} value={5} title="Consultas"/>
+                <StatisticCardComponent icon={<FaNotesMedical/>} value={5} title="Exames"/>
             </Styled.Statistics>
             <Styled.Titles>Informações Rápidas de Pacientes</Styled.Titles>
             <Styled.Search>
