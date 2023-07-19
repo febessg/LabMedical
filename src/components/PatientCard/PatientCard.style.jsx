@@ -44,7 +44,7 @@ export const PatientName = styled.h2`
 `
 
 export const PatientAge = styled.h4`
-    color: #BBB9CB;
+    color: #9A95B1;
 `
 
 export const PatientContact = styled.h2`
