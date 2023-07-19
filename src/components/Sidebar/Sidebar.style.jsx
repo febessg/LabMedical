@@ -31,3 +31,13 @@ export const Sidebar = styled.div`
         cursor: pointer;
     }
 `
+
+export const SidebarContent = styled.div`
+    margin-top: 5rem;
+`
+
+export const Titles = styled.h4`
+    color: #FFF;
+    padding-left: 1rem;
+    font-weight: 400;
+`

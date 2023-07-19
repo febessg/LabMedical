@@ -19,7 +19,7 @@ export const SidebarItemComponent = ({icon, text, path}) => {
 }
 
 SidebarItemComponent.propTypes = {
-    icon: PropTypes.any,
-    text: PropTypes.string,
+    icon: PropTypes.any.isRequired,
+    text: PropTypes.string.isRequired,
     path: PropTypes.string
 }
