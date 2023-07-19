@@ -45,6 +45,10 @@ export const FormLoginComponent = () => {
         navigate('/');
     }
 
+    const handleEsqueceuSenha = () => {
+        alert('Esta funcionalidade está em construção')
+    }
+
     const redirectSignUp = () => {
         navigate('/signup');
     }
@@ -80,7 +84,7 @@ export const FormLoginComponent = () => {
             </Styled.InputGroup>
             <Styled.Button $active={!errors.email && !errors.password} type="submit" disabled={errors.email || errors.password}>Entrar</Styled.Button>
             <Styled.Action>
-                <Styled.EsqueceuSenha>Esqueceu sua senha?</Styled.EsqueceuSenha>
+                <Styled.EsqueceuSenha onClick={handleEsqueceuSenha}>Esqueceu sua senha?</Styled.EsqueceuSenha>
                 <Styled.SemConta>Ainda não tem uma conta? <Styled.Cadastro onClick={redirectSignUp}>Cadastre-se</Styled.Cadastro></Styled.SemConta>
             </Styled.Action>
         </Styled.Form>
