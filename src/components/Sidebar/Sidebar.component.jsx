@@ -18,7 +18,7 @@ export const SidebarComponent = ({active}) => {
                 </div>
                 <div className='PatientsItens'>
                     <Styled.Titles>Pacientes</Styled.Titles>
-                    <SidebarItemComponent icon={<FaPlus/>} text="Cadastrar" path='/'/>
+                    <SidebarItemComponent icon={<FaPlus/>} text="Cadastrar" path='/patient-register'/>
                     <SidebarItemComponent icon={<FaList/>} text="Listar Prontuário" path='/'/>
                 </div>
                 <div className='ExamsItens'>
