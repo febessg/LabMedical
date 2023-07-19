@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { ToolbarComponent } from "../../components/Toolbar/Toolbar.component";
 import { ToolbarContext } from "../../contexts/Toolbar/Toolbar.context";
 import { UserContext } from "../../contexts/User/User.context";
+import { FormPatientRegisterComponent } from "../../components/Form/PatientRegister/PatientRegister.component";
 
 export const PatientRegisterPage = () => {
     const {setToolbar} = useContext(ToolbarContext);
@@ -22,7 +23,7 @@ export const PatientRegisterPage = () => {
     return (
         <>
             <ToolbarComponent/>
-            <p>PatientRegister Page is render</p>
+            <FormPatientRegisterComponent/>
         </>
     )
 }
