@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as Styled from './Input.style';
 import {MdVisibility, MdVisibilityOff} from 'react-icons/md';
 
-export const InputComponent = ({label, type, id, placeholder, register, error}) => {
+export const InputComponent = ({label, type, id, placeholder, options, register, error}) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleShowPassword = () => {
@@ -14,7 +14,7 @@ export const InputComponent = ({label, type, id, placeholder, register, error}) 
         <Styled.InputGroup>
                     <Styled.Label $color={error && 'danger'} htmlFor={id}>{label}</Styled.Label>
 
-                   {type !== 'textarea' &&
+                   {type !== 'textarea' && type !== 'select'  &&
                         <Styled.InputContainer>
                             <Styled.Input $color={error && 'danger'}  type={showPassword ? 'text' : type} id={id} placeholder={placeholder} {...register}/>
                             {type === 'password' &&
@@ -28,6 +28,17 @@ export const InputComponent = ({label, type, id, placeholder, register, error}) 
                     {type === 'textarea' &&
                         <Styled.TextArea $color={error && 'danger'}  id={id} placeholder={placeholder} {...register}/>
                     }
+
+                    {type === 'select' &&
+                        <Styled.Select $color={error && 'danger'}  id={id} {...register}>
+                            <option value="default" selected disabled hidden> </option>
+                            {options.map((option) => (
+                                <option key={option.value} value={option.value}>
+                                    {option.label}
+                                </option>
+                            ))}
+                        </Styled.Select>
+                    }
         </Styled.InputGroup>
     )
 }
@@ -37,6 +48,10 @@ InputComponent.propTypes = {
     type: PropTypes.string,
     id: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
+    options: PropTypes.arrayOf(PropTypes.shape({
+        value: PropTypes.string,
+        label: PropTypes.string,
+    })),
     register: PropTypes.any,
     error: PropTypes.any
 }

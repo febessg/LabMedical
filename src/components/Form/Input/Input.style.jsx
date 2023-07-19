@@ -59,3 +59,18 @@ export const TextArea = styled.textarea`
         border: 1px solid ${({$color}) => {return $color === 'danger' ? '#BE2E2E' : '#159976'}};
     }
 `
+
+export const Select = styled.select`
+    display: flex;
+    align-items: flex-start;
+    align-self: stretch;
+    border-radius: 0.3rem;
+    border: 1px solid ${({$color}) => {return $color === 'danger' ? '#BE2E2E' : '#159976'}};
+    width: 100%;
+    padding: .5rem;
+
+    &:focus {
+        background-color: #d2d0dc65;
+        border: 1px solid ${({$color}) => {return $color === 'danger' ? '#BE2E2E' : '#159976'}};
+    }
+`
