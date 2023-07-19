@@ -4,6 +4,8 @@ import {FaTimes, FaHome, FaPlus, FaList} from 'react-icons/fa';
 import {FiLogOut} from 'react-icons/fi';
 
 export const SidebarComponent = ({active}) => {
+    
+
     const closeSidebar = () => {
         active(false)
     }
