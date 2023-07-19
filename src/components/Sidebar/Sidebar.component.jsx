@@ -4,6 +4,8 @@ import {FaTimes, FaHome, FaPlus, FaList} from 'react-icons/fa';
 import {FiLogOut} from 'react-icons/fi';
 
 export const SidebarComponent = ({active}) => {
+    
+
     const closeSidebar = () => {
         active(false)
     }
@@ -18,7 +20,7 @@ export const SidebarComponent = ({active}) => {
                 </div>
                 <div className='PatientsItens'>
                     <Styled.Titles>Pacientes</Styled.Titles>
-                    <SidebarItemComponent icon={<FaPlus/>} text="Cadastrar" path='/'/>
+                    <SidebarItemComponent icon={<FaPlus/>} text="Cadastrar" path='/patient-register'/>
                     <SidebarItemComponent icon={<FaList/>} text="Listar Prontuário" path='/'/>
                 </div>
                 <div className='ExamsItens'>

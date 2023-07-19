@@ -1,12 +1,21 @@
 import PropTypes from 'prop-types';
 import * as Styled from './SidebarItem.style';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/auth/auth.context';
+import { UserContext } from '../../contexts/User/User.context';
 
 export const SidebarItemComponent = ({icon, text, path}) => {
+    const {setAuth} = useContext(AuthContext);
+    const {user} = useContext(UserContext);
 
     const navigate = useNavigate();
 
     const handleNavigate = () => {
+        setAuth({
+            user,
+            isLogged: true
+        });
         navigate(path)
     }
 
