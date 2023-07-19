@@ -1,3 +1,4 @@
+import { ButtonComponent } from "../../Button/Button.component";
 import { InputComponent } from "../Input/Input.component";
 import * as Styled from './PatientRegister.style';
 
@@ -16,8 +17,16 @@ export const FormPatientRegisterComponent = () => {
     ]
     return (
         <Styled.Form>
+            
             <Styled.InputGroup className="InputGroup">
-                <Styled.Titles>Identificação</Styled.Titles>
+                <Styled.Container>
+                    <Styled.Titles>Identificação</Styled.Titles>
+                    <Styled.Buttons>
+                    <ButtonComponent title='Editar'/>
+                    <ButtonComponent color='red' title='Deletar'/>
+                    <ButtonComponent title='Salvar'/>
+                    </Styled.Buttons>
+                </Styled.Container>
                 <InputComponent label='Nome Completo' id='fullName' type='text'/>
                 <Styled.InputRow className="InputRow">
                     <InputComponent label='Gênero' id='gender' type='select' options={gender}/>
