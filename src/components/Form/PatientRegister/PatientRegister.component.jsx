@@ -19,14 +19,7 @@ export const FormPatientRegisterComponent = () => {
         <Styled.Form>
             
             <Styled.InputGroup className="InputGroup">
-                <Styled.Container>
-                    <Styled.Titles>Identificação</Styled.Titles>
-                    <Styled.Buttons>
-                    <ButtonComponent title='Editar'/>
-                    <ButtonComponent color='red' title='Deletar'/>
-                    <ButtonComponent title='Salvar'/>
-                    </Styled.Buttons>
-                </Styled.Container>
+                <Styled.Titles>Identificação</Styled.Titles>
                 <InputComponent label='Nome Completo' id='fullName' type='text'/>
                 <Styled.InputRow className="InputRow">
                     <InputComponent label='Gênero' id='gender' type='select' options={gender}/>
@@ -73,6 +66,11 @@ export const FormPatientRegisterComponent = () => {
                 </Styled.InputRow>
                 <InputComponent label='Ponto de Referência' id='reference' type='text'/>
             </Styled.InputGroup>
+            <Styled.ButtonsWrapper>
+                    <Styled.Button>Editar</Styled.Button>
+                    <Styled.Button $color='red'>Deletar</Styled.Button>
+                    <Styled.Button>Salvar</Styled.Button>
+            </Styled.ButtonsWrapper>
         </Styled.Form>
     )
 }
