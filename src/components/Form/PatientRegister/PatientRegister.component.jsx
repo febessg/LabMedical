@@ -1,4 +1,3 @@
-import { ButtonComponent } from "../../Button/Button.component";
 import { InputComponent } from "../Input/Input.component";
 import * as Styled from './PatientRegister.style';
 
