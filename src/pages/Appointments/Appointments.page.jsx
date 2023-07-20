@@ -5,7 +5,7 @@ import { ToolbarComponent } from "../../components/Toolbar/Toolbar.component";
 import { useContext, useEffect } from "react";
 import { ToolbarContext } from "../../contexts/Toolbar/Toolbar.context";
 import { UserContext } from "../../contexts/User/User.context";
-import { UserService } from "../../services/User/User.service";
+import { FormAppointmentComponent } from "../../components/Form/Appointment/Appointment.component";
 
 export const AppointmentsPage = () => {
     const {setToolbar} = useContext(ToolbarContext);
@@ -36,6 +36,7 @@ export const AppointmentsPage = () => {
                 </Styled.InputGroup>
                 <Styled.Button>Buscar</Styled.Button>
             </Styled.SearchPatient>
+            <FormAppointmentComponent patient='Jane Doe'/>
         </Styled.Appointments>
         </>
         
