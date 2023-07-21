@@ -26,7 +26,7 @@ export const SidebarComponent = ({active}) => {
                 <div className='ExamsItens'>
                 <Styled.Titles>Prontuário</Styled.Titles>
                     <SidebarItemComponent icon={<FaPlus/>} text="Cadastrar Consulta" path='/appointments'/>
-                    <SidebarItemComponent icon={<FaPlus/>} text="Cadastrar Exame" path='/'/>
+                    <SidebarItemComponent icon={<FaPlus/>} text="Cadastrar Exame" path='/exams'/>
                 </div>
             </Styled.SidebarContent>
         </Styled.Sidebar>
