@@ -50,6 +50,11 @@ export const List = styled.div`
 export const SubTitles = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+`
+
+export const SubTitle = styled.h3`
     color: #9A95B1;
+    width: 33.33%;
+    text-align: center;
 `
