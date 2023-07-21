@@ -5,6 +5,7 @@ import { UserContext } from "../../contexts/User/User.context";
 import * as Styled from './Exams.style';
 import { InputComponent } from "../../components/Form/Input/Input.component";
 import { FaSearch } from "react-icons/fa";
+import { FormExamsComponent } from "../../components/Form/Exams/Exams.component";
 
 export const ExamsPage = () => {
     const {setToolbar} = useContext(ToolbarContext);
@@ -35,6 +36,7 @@ export const ExamsPage = () => {
                 </Styled.InputGroup>
                 <Styled.Button>Buscar</Styled.Button>
             </Styled.SearchPatient>
+            <FormExamsComponent patient='Jane Doe'/>
         </Styled.Exams>
         </>
     )
