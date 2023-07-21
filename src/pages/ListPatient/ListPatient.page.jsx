@@ -5,6 +5,7 @@ import { UserContext } from "../../contexts/User/User.context";
 import { InputComponent } from "../../components/Form/Input/Input.component";
 import { FaSearch } from "react-icons/fa";
 import * as Styled from './ListPatient.style';
+import { ListPatientCardComponent } from "../../components/ListPatientCard/ListPatientCard.component";
 
 export const ListPatientPage = () => {
     const {setToolbar} = useContext(ToolbarContext);
@@ -41,6 +42,9 @@ export const ListPatientPage = () => {
                     <h3>Nome do Paciente</h3>
                     <h3>Convênio</h3>
                 </Styled.SubTitles>
+                <ListPatientCardComponent/>
+                <ListPatientCardComponent/>
+                <ListPatientCardComponent/>
             </Styled.List>
         </Styled.ListPage>
         </>
