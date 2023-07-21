@@ -7,6 +7,7 @@ import { PatientRegisterPage } from "./pages/PatientRegister/PatientRegister.pag
 import { AppointmentsPage } from "./pages/Appointments/Appointments.page"
 import { ExamsPage } from "./pages/Exams/Exams.page"
 import { ListPatientPage } from "./pages/ListPatient/ListPatient.page"
+import { MedicalRecordPage } from "./pages/MedicalRecord/MedicalRecord.page"
 
 if (!LocalStorageService.get('users')) {
   LocalStorageService.set('users', [
@@ -35,6 +36,7 @@ function App() {
         <Route path="/appointments" element={<AppointmentsPage/>}/>
         <Route path="/exams" element={<ExamsPage/>}/>
         <Route path="/list-patients" element={<ListPatientPage/>}/>
+        <Route path="/medical-record" element={<MedicalRecordPage/>}/>
         <Route path="*" element={<><p>Página não existe</p></>}/>
       </Routes>
     </Router>
