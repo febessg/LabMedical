@@ -5,6 +5,7 @@ import { LocalStorageService } from "./services/User/LocalStorage.service"
 import { SignUpPage } from "./pages/SignUp/SignUp.page"
 import { PatientRegisterPage } from "./pages/PatientRegister/PatientRegister.page"
 import { AppointmentsPage } from "./pages/Appointments/Appointments.page"
+import { ExamsPage } from "./pages/Exams/Exams.page"
 
 if (!LocalStorageService.get('users')) {
   LocalStorageService.set('users', [
@@ -31,6 +32,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage/>}/>
         <Route path="/patient-register" element={<PatientRegisterPage/>}/>
         <Route path="/appointments" element={<AppointmentsPage/>}/>
+        <Route path="/exams" element={<ExamsPage/>}/>
         <Route path="*" element={<><p>Página não existe</p></>}/>
       </Routes>
     </Router>
