@@ -44,7 +44,11 @@ export const Button = styled.button`
 `
 
 export const List = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     margin-top: 2rem;
+
 `
 
 export const SubTitles = styled.div`
