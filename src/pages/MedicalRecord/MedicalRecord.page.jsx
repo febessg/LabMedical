@@ -3,6 +3,7 @@ import { ToolbarComponent } from "../../components/Toolbar/Toolbar.component"
 import { ToolbarContext } from "../../contexts/Toolbar/Toolbar.context";
 import { UserContext } from "../../contexts/User/User.context";
 import * as Styled from './MedicalRecord.style';
+import { MedicalRecordItemComponent } from "../../components/MedicalRecordItem/MedicalRecordItem.component";
 
 export const MedicalRecordPage = () => {
     const {user} = useContext(UserContext);
@@ -28,7 +29,8 @@ export const MedicalRecordPage = () => {
                     <Styled.PatientInfos><strong>Alergias:</strong> {'Lorem Ipsun'}</Styled.PatientInfos>
                     <Styled.PatientInfos><strong>Cuidados específicos:</strong> {'Lorem Ipsun'}</Styled.PatientInfos>
                 </Styled.Container>
-
+                <MedicalRecordItemComponent id={'1'} title={'Consulta'}/>
+                <MedicalRecordItemComponent id={'2'} title={'Exame'}/>
             </Styled.MedicalRecord>
         </>
     )
