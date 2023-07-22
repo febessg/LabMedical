@@ -41,3 +41,11 @@ export const Titles = styled.h4`
     padding-left: 1rem;
     font-weight: 400;
 `
+
+export const Logo = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+`

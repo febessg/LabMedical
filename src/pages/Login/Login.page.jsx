@@ -1,6 +1,6 @@
 import { FormLoginComponent } from "../../components/Form/Login/Login.component";
 import * as Styled from './Login.style';
-import logo from '../../assets/Logo-big.jpg';
+import logo from '../../assets/Logo-big.png';
 
 export const LoginPage = () => {
     return (

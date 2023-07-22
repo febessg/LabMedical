@@ -2,6 +2,7 @@ import { SidebarItemComponent } from '../SidebarItem/SidebarItem.component';
 import * as Styled from './Sidebar.style';
 import {FaTimes, FaHome, FaPlus, FaList} from 'react-icons/fa';
 import {FiLogOut} from 'react-icons/fi';
+import logo from '../../assets/logo-small.png'
 
 export const SidebarComponent = ({active}) => {
     
@@ -13,6 +14,9 @@ export const SidebarComponent = ({active}) => {
         <Styled.Sidebar>
             <FaTimes onClick={closeSidebar}/>
             <Styled.SidebarContent>
+                <Styled.Logo>
+                    <img src={logo} alt="Logo LabMedical" />
+                </Styled.Logo>
                 <div className="GeralItens">
                     <Styled.Titles>Geral</Styled.Titles>
                     <SidebarItemComponent icon={<FaHome/>} text="Início" path='/'/>
