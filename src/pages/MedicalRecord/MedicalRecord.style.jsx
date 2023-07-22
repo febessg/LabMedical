@@ -11,6 +11,7 @@ export const PatientName = styled.h2`
 
 export const Container = styled.div`
     margin-left: 1rem;
+    margin-bottom: 5rem;
 `
 
 export const PatientInfos = styled.h3`
