@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { InputComponent } from "../Input/Input.component";
 import * as Styled from './PatientRegister.style';
+import { useEffect, useState } from "react";
 
 export const FormPatientRegisterComponent = () => {
     const gender = [
@@ -23,8 +24,38 @@ export const FormPatientRegisterComponent = () => {
         formState: {errors}
     } = useForm();
 
+    const [formData, setFormData] = useState({});
+    const [cep, setCep] = useState('');
+
+    const handleCep = (event) => {
+        event.preventDefault();
+        const {value} = event.target;
+        console.log(value)
+
+        if(value.length === 8) {
+            setCep(value);
+        }
+    }
+
+    useEffect(() => {
+        async function request() {
+           await fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then((res) => res.json())
+        .then((data) => {
+            setFormData({...register,
+                place: data.logradouro,
+                city: data.localidade,
+                state: data.uf,
+                neighborhood: data.bairro
+            })
+        })
+        .catch((error) => console.error('Erro na requisição: ', error)) 
+        }
+        request();
+    }, [cep])
+        
     return (
-        <Styled.Form>
+        <Styled.Form> 
             <Styled.InputGroup className="InputGroup">
                 <Styled.Titles>Identificação</Styled.Titles>
                 <InputComponent 
@@ -149,17 +180,17 @@ export const FormPatientRegisterComponent = () => {
             <Styled.InputGroup className="InputGroup">
                 <Styled.Titles>Dados de Endereço</Styled.Titles>
                 <Styled.InputRow>
-                    <InputComponent label='CEP' id='cep' type='text'/>
-                    <InputComponent label='Cidade' id='city' type='text'/>
-                    <InputComponent label='Estado' id='state' type='text'/>
+                    <InputComponent label='CEP' id='cep' type='text' func={handleCep}/>
+                    <InputComponent label='Cidade' id='city' type='text' value={formData.city} justRead={true}/>
+                    <InputComponent label='Estado' id='state' type='text' value={formData.state} justRead={true}/>
                 </Styled.InputRow>
                 <Styled.InputRow>
-                    <InputComponent label='Logradouro' id='place' type='text'/>
+                    <InputComponent label='Logradouro' id='place' type='text' value={formData.place} justRead={true}/>
                     <InputComponent label='Número' id='number' type='text'/>
                 </Styled.InputRow>
                 <Styled.InputRow>
                     <InputComponent label='Complemento' id='complement' type='text'/>
-                    <InputComponent label='Bairro' id='neighborhood' type='text'/>
+                    <InputComponent label='Bairro' id='neighborhood' type='text' value={formData.neighborhood} justRead={true}/>
                 </Styled.InputRow>
                 <InputComponent label='Ponto de Referência' id='reference' type='text'/>
             </Styled.InputGroup>
