@@ -39,7 +39,7 @@ const Delete = (id) => {
     LocalStorageService.set('patients', patients)
 };
 
-export const UserService = {
+export const PatientService = {
     Get,
     Create,
     Show,
