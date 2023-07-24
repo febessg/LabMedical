@@ -29,6 +29,10 @@ const ShowByName = (name) => {
     return Get().find(patient => patient.name === name)
 }
 
+const ShowByCpf = (cpf) => {
+    return Get().find(patient => patient.cpf === cpf)
+}
+
 const Delete = (id) => {
     LocalStorageService.set('patients', Get().filter(patient => patient.id !== id));
  };
@@ -46,6 +50,7 @@ export const PatientService = {
     ShowByEmail,
     ShowByPhoneNumber,
     ShowByName,
+    ShowByCpf,
     Delete,
     Update
 };
