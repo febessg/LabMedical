@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { LoginPage } from "./pages/Login/Login.page"
 import { HomePage } from "./pages/Home/Home.page"
-import { LocalStorageService } from "./services/User/LocalStorage.service"
+import { LocalStorageService } from "./services/LocalStorage.service"
 import { SignUpPage } from "./pages/SignUp/SignUp.page"
 import { PatientRegisterPage } from "./pages/PatientRegister/PatientRegister.page"
 import { AppointmentsPage } from "./pages/Appointments/Appointments.page"
@@ -20,6 +20,19 @@ if (!LocalStorageService.get('users')) {
         id: 2,
         email: 'usuario@labmedical.com',
         password: '12345678'
+    }
+]
+)
+}
+
+if (!LocalStorageService.get('patients')) {
+  LocalStorageService.set('patients', [
+    {
+        id: 1,
+        name: 'Jane Doe',
+        age: 25,
+        email: 'janedoe@labmedical.com',
+        phoneNumber: '(99) 9 9999-9999'
     }
 ]
 )
