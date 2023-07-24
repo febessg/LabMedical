@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { LoginPage } from "./pages/Login/Login.page"
 import { HomePage } from "./pages/Home/Home.page"
-import { LocalStorageService } from "./services/User/LocalStorage.service"
+import { LocalStorageService } from "./services/LocalStorage.service"
 import { SignUpPage } from "./pages/SignUp/SignUp.page"
 import { PatientRegisterPage } from "./pages/PatientRegister/PatientRegister.page"
 import { AppointmentsPage } from "./pages/Appointments/Appointments.page"
