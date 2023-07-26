@@ -1,61 +1,65 @@
 import { useForm } from "react-hook-form";
 import { InputComponent } from "../Input/Input.component";
 import * as Styled from './PatientRegister.style';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { PatientService } from "../../../services/Patient/Patient.service";
+import { useNavigate } from "react-router-dom";
 
 export const FormPatientRegisterComponent = () => {
     const gender = [
-        { value: 'opt1', label: 'Feminino'},
-        {value: 'opt2',label: 'Masculino'}
+        {value: 'Feminino', label: 'Feminino'},
+        {value: 'Masculino',label: 'Masculino'}
     ]
 
     const maritalStatus = [
-        { value: 'opt1', label: 'Solteiro'},
-        {value: 'opt2', label: 'Casado'},
-        {value: 'opt3', label: 'Divorciado'},
-        {value: 'opt4', label: 'Viúvo'},
-        {value: 'opt5', label: 'União estável'}
+        {value: 'Solteiro', label: 'Solteiro'},
+        {value: 'Casado', label: 'Casado'},
+        {value: 'Divorciado', label: 'Divorciado'},
+        {value: 'Viúvo', label: 'Viúvo'},
+        {value: 'União estável', label: 'União estável'}
     ]
 
     const {
         register,
         handleSubmit,
         reset,
-        formState: {errors}
+        formState: {errors},
+        setValue,
+        watch,
     } = useForm();
 
-    const [formData, setFormData] = useState({});
-    const [cep, setCep] = useState('');
-
-    const handleCep = (event) => {
-        event.preventDefault();
-        const {value} = event.target;
-        console.log(value)
-
-        if(value.length === 8) {
-            setCep(value);
-        }
-    }
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function request() {
-           await fetch(`https://viacep.com.br/ws/${cep}/json/`)
+           await fetch(`https://viacep.com.br/ws/${watch('cep')}/json/`)
         .then((res) => res.json())
         .then((data) => {
-            setFormData({...register,
-                place: data.logradouro,
-                city: data.localidade,
-                state: data.uf,
-                neighborhood: data.bairro
-            })
+            setValue('place', data.logradouro)
+            setValue('city', data.localidade)
+            setValue('state', data.uf)
+            setValue('neighborhood', data.bairro)
         })
-        .catch((error) => console.error('Erro na requisição: ', error)) 
+        .catch((error) => console.error('Erro na requisição: ', error));
         }
-        request();
-    }, [cep])
+        watch('cep').length > 7 && request();
+    }, [watch('cep')]);
+
+    const submitForm = (data) => {
+        const { cpf } = data;
+        
+        if (PatientService.ShowByCpf(cpf)) {
+            alert('Paciente já cadastrado');
+            reset();
+            return
+        }
+
+        PatientService.Create(data);
+        navigate('/medical-record')
+    }
         
     return (
-        <Styled.Form> 
+        <Styled.Form  onSubmit={handleSubmit(submitForm)}> 
             <Styled.InputGroup className="InputGroup">
                 <Styled.Titles>Identificação</Styled.Titles>
                 <InputComponent 
@@ -88,11 +92,7 @@ export const FormPatientRegisterComponent = () => {
                     />
                     <InputComponent label='Data de Nascimento' id='birthDate' type='date'
                     register={{...register('birthDate', {
-                        required: true,
-                        pattern: {
-                            value: /^\d{2}-\d{2}-\d{4}$/,
-                            message: "Data inválida. Utilize o formato 'dd-mm-aaaa'"
-                        }
+                        required: true
                     })}}
                         error={errors.birthDate}
                     />
@@ -150,6 +150,7 @@ export const FormPatientRegisterComponent = () => {
                         required: true,
                         validate:  {matchPath: (v) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v)}
                     })}}
+                        error={errors.email}
                     />
                     <InputComponent label='Contato de Emergência' id='emergencyContact' type='text' placeholder='(99) 9 9999-9999'
                     register={{...register('emergencyContact', {
@@ -164,40 +165,82 @@ export const FormPatientRegisterComponent = () => {
                 </Styled.InputRow>
                 <Styled.InputRow className="InputRow">
                     <InputComponent label='Alergias' id='allergies' type='textarea'
-                    
+                    register={{...register('allergies')}}
                     />
-                    <InputComponent label='Cuidados' id='specialCares' type='textarea'/>
+                    <InputComponent label='Cuidados' id='specialCares' type='textarea'
+                        register={{...register('specialCares')}}
+                    />
                 </Styled.InputRow>
             </Styled.InputGroup>
             <Styled.InputGroup className="InputGroup">
                 <Styled.Titles>Convênio</Styled.Titles>
-                <InputComponent label='Convênio' id='insurance' type='text'/>
+                <InputComponent label='Convênio' id='insurance' type='text'
+                    register={{...register('insurance')}}
+                />
                 <Styled.InputRow>
-                    <InputComponent label='Número do Convênio' id='insuranceNumber' type='text'/>
-                    <InputComponent label='Validade do Convênio' id='insuranceValidity' type='date'/>
+                    <InputComponent label='Número do Convênio' id='insuranceNumber' type='text'
+                        register={{...register('insuranceNumber')}}
+                    />
+                    <InputComponent label='Validade do Convênio' id='insuranceValidity' type='date'
+                        register={{...register('insuranceValidity')}}
+                    />
                 </Styled.InputRow>
             </Styled.InputGroup>
             <Styled.InputGroup className="InputGroup">
                 <Styled.Titles>Dados de Endereço</Styled.Titles>
                 <Styled.InputRow>
-                    <InputComponent label='CEP' id='cep' type='text' func={handleCep}/>
-                    <InputComponent label='Cidade' id='city' type='text' value={formData.city} justRead={true}/>
-                    <InputComponent label='Estado' id='state' type='text' value={formData.state} justRead={true}/>
+                    <InputComponent label='CEP' id='cep' type='text'
+                    register={{...register('cep', {
+                        required: true
+                    })}}
+                    error={errors.cep}
+                    />
+                    <InputComponent label='Cidade' id='city' type='text' justRead={true}
+                    register={{...register('city', {
+                        required: true
+                    })}}
+                    error={errors.city}
+                    />
+                    <InputComponent label='Estado' id='state' type='text' justRead={true}
+                    register={{...register('state', {
+                        required: true
+                    })}}
+                    error={errors.state}  
+                    />
                 </Styled.InputRow>
                 <Styled.InputRow>
-                    <InputComponent label='Logradouro' id='place' type='text' value={formData.place} justRead={true}/>
-                    <InputComponent label='Número' id='number' type='text'/>
+                    <InputComponent label='Logradouro' id='place' type='text' justRead={true}
+                        register={{...register('place', {
+                            required: true
+                        })}}
+                        error={errors.place}
+                    />
+                    <InputComponent label='Número' id='number' type='text'
+                        register={{...register('number', {
+                            required: true
+                        })}}
+                        error={errors.number}
+                    />
                 </Styled.InputRow>
                 <Styled.InputRow>
-                    <InputComponent label='Complemento' id='complement' type='text'/>
-                    <InputComponent label='Bairro' id='neighborhood' type='text' value={formData.neighborhood} justRead={true}/>
+                    <InputComponent label='Complemento' id='complement' type='text'
+                        register={{...register('complement')}}
+                    />
+                    <InputComponent label='Bairro' id='neighborhood' type='text' justRead={true}
+                        register={{...register('neighborhood', {
+                            required: true
+                        })}}
+                        error={errors.neighborhood}
+                    />
                 </Styled.InputRow>
-                <InputComponent label='Ponto de Referência' id='reference' type='text'/>
+                <InputComponent label='Ponto de Referência' id='reference' type='text'
+                    register={{...register('reference')}}
+                />
             </Styled.InputGroup>
             <Styled.ButtonsWrapper>
-                    <Styled.Button>Editar</Styled.Button>
-                    <Styled.Button $color='red'>Deletar</Styled.Button>
-                    <Styled.Button $active={!errors}>Salvar</Styled.Button>
+                    <Styled.Button $active={!Object(errors).length} type="button" disabled={Object(errors).length}>Editar</Styled.Button>
+                    <Styled.Button $color='red' $active={!Object(errors).length} type="button" disabled={Object(errors).length}>Deletar</Styled.Button>
+                    <Styled.Button  $active={!Object(errors).length} type='submit' disabled={Object(errors).length} onClick={() => console.log('Funcionando')}>Salvar</Styled.Button>
             </Styled.ButtonsWrapper>
         </Styled.Form>
     )

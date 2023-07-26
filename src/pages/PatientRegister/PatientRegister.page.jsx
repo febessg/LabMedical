@@ -9,8 +9,6 @@ export const PatientRegisterPage = () => {
     const {setToolbar} = useContext(ToolbarContext);
     const {user} = useContext(UserContext);
 
-    console.log(user)
-
     const setHomeToolbar = () => {
         const newToolbar = {
             title: 'Cadastrar Paciente',
