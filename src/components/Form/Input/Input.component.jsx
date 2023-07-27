@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as Styled from './Input.style';
 import {MdVisibility, MdVisibilityOff} from 'react-icons/md';
 
-export const InputComponent = ({label, type, id, placeholder, options, register, error, func, value, justRead}) => {
+export const InputComponent = ({label, type, id, placeholder, options, register, error, func, onSubmit, value, justRead}) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleShowPassword = () => {
@@ -17,8 +17,8 @@ export const InputComponent = ({label, type, id, placeholder, options, register,
                    {type !== 'textarea' && type !== 'select'  &&
                         <Styled.InputContainer>
                             {justRead === true ? 
-                                <Styled.Input $color={error && 'danger'}  type={showPassword ? 'text' : type} id={id} placeholder={placeholder} {...register} onBlur={func} value={value} readOnly/> :
-                                <Styled.Input $color={error && 'danger'}  type={showPassword ? 'text' : type} id={id} placeholder={placeholder} {...register} onBlur={func} value={value}/>
+                                <Styled.Input $color={error && 'danger'}  type={showPassword ? 'text' : type} id={id} placeholder={placeholder} {...register} onBlur={func} onSubmit={onSubmit} value={value} readOnly/> :
+                                <Styled.Input $color={error && 'danger'}  type={showPassword ? 'text' : type} id={id} placeholder={placeholder} {...register} onBlur={func} onSubmit={onSubmit} value={value}/>
                             }
                             {type === 'password' &&
                                 <Styled.Icon $color={error && 'danger'}  type='button' onClick={handleShowPassword}>

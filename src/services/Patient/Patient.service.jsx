@@ -26,7 +26,7 @@ const ShowByPhoneNumber = (phoneNumber) => {
 };
 
 const ShowByName = (name) => {
-    return Get().find(patient => patient.name === name)
+    return Get().find(patient => patient.fullName === name)
 }
 
 const ShowByCpf = (cpf) => {

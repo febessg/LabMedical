@@ -19,7 +19,7 @@ export const Statistics = styled.div`
     margin-bottom: 2rem;
 `
 
-export const Search = styled.div`
+export const Search = styled.form`
     display: flex;
     flex-direction: row;
     align-items: flex-end;
