@@ -61,21 +61,23 @@ export const AppointmentsPage = () => {
                 </Styled.InputGroup>
                 <Styled.Button type="submit">Buscar</Styled.Button>
             </Styled.SearchPatient>
-            {!search ? PatientService.Get().map((patient) => {
-                return <ListPatientCardComponent
-                    key={patient.id}
-                    id={patient.id}
-                    name={patient.fullName}
-                    insurance={patient.insurance}
-                    func={registerAppointment}        
+            <Styled.List>
+                {!search ? PatientService.Get().map((patient) => {
+                    return <ListPatientCardComponent
+                        key={patient.id}
+                        id={patient.id}
+                        name={patient.fullName}
+                        insurance={patient.insurance}
+                        func={registerAppointment}
+                    />
+                }) : <ListPatientCardComponent
+                id={search.id}
+                name={search.fullName}
+                insurance={search.insurance}
+                func={registerAppointment}
                 />
-            }) : <ListPatientCardComponent
-            id={search.id}
-            name={search.fullName}
-            insurance={search.insurance}
-            func={registerAppointment}   
-            />
-            }
+                }
+            </Styled.List>
             
         </Styled.Appointments>
         </>
