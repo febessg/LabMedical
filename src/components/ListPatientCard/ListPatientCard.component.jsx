@@ -1,26 +1,11 @@
 import PropTypes from 'prop-types';
 import * as Styled from './ListPatientCard.style';
-import {GrNext} from 'react-icons/gr'
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/auth/auth.context';
-import { useContext } from 'react';
-import { UserContext } from '../../contexts/User/User.context';
+import {GrNext} from 'react-icons/gr';
 
-export const ListPatientCardComponent = ({id, name, insurance}) => {
-    const {setAuth} = useContext(AuthContext);
-    const {user} = useContext(UserContext);
-    const navigate = useNavigate();
-
-    const openMedicalRecord = () => {
-        setAuth({
-            user,
-            isLogged: true
-        });
-        navigate('/medical-record')
-    }
+export const ListPatientCardComponent = ({key, id, name, insurance, func}) => {
 
     return (
-        <Styled.ListCard onClick={openMedicalRecord}>
+        <Styled.ListCard key={key} onClick={func}>
             <Styled.PatientInfo>{id}</Styled.PatientInfo>
             <Styled.PatientInfo>{name}</Styled.PatientInfo>
             <Styled.PatientInfo>{insurance}</Styled.PatientInfo>
@@ -30,7 +15,9 @@ export const ListPatientCardComponent = ({id, name, insurance}) => {
 };
 
 ListPatientCardComponent.propTypes = {
+    key: PropTypes.number,
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    insurance: PropTypes.string
+    insurance: PropTypes.string,
+    func: PropTypes.func.isRequired
 }
