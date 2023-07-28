@@ -14,19 +14,19 @@ const Create = (data) => {
 };
 
 const Show = (id) => {
-    return Get().find(patient => patient.id === id)
+    return Get().find(patient => patient.id == id)
 };
 
 const ShowByEmail = (email) => {
     return Get().find(patient => patient.email === email)
 };
 
-const ShowByPhoneNumber = (phoneNumber) => {
-    return Get().find(patient => patient.phoneNumber === phoneNumber)
-};
+const ShowByInfo = (info) => {
+    return Get().find(patient => patient.fullName.includes(info) || patient.phoneNumber === info)
+}
 
 const ShowByName = (name) => {
-    return Get().find(patient => patient.name === name)
+    return Get().find(patient => patient.fullName.includes(name))
 }
 
 const ShowByCpf = (cpf) => {
@@ -48,7 +48,7 @@ export const PatientService = {
     Create,
     Show,
     ShowByEmail,
-    ShowByPhoneNumber,
+    ShowByInfo,
     ShowByName,
     ShowByCpf,
     Delete,

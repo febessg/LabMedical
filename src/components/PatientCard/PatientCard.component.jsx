@@ -11,10 +11,10 @@ export const PatientCardComponent = ({name, age, contact, healthInsurance}) => {
                 <Styled.PatientName>{name}</Styled.PatientName>
                 <Styled.PatientAge>{age} anos</Styled.PatientAge>
             </Styled.PatientInfo>
-                <Styled.PatientInfo>
-                    <Styled.PatientContact>{contact}</Styled.PatientContact>
-                    <Styled.HealthInsurance>{healthInsurance}</Styled.HealthInsurance>
-                </Styled.PatientInfo>
+            <Styled.PatientInfo>
+                <Styled.PatientContact>{contact}</Styled.PatientContact>
+                {healthInsurance ? <Styled.HealthInsurance>{healthInsurance}</Styled.HealthInsurance> : <Styled.HealthInsurance $display={'none'}>{healthInsurance}</Styled.HealthInsurance> }
+            </Styled.PatientInfo>
             <Styled.Button>Ver mais</Styled.Button>
         </Styled.PatientCard>
     )
@@ -22,7 +22,7 @@ export const PatientCardComponent = ({name, age, contact, healthInsurance}) => {
 
 PatientCardComponent.propTypes = {
     name: PropTypes.string.isRequired,
-    age: PropTypes.number.isRequired,
+    age: PropTypes.func.isRequired,
     contact: PropTypes.string.isRequired,
     healthInsurance: PropTypes.string
 }
