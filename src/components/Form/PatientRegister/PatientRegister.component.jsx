@@ -240,7 +240,7 @@ export const FormPatientRegisterComponent = () => {
             <Styled.ButtonsWrapper>
                     <Styled.Button $active={!Object(errors).length} type="button" disabled={Object(errors).length}>Editar</Styled.Button>
                     <Styled.Button $color='red' $active={!Object(errors).length} type="button" disabled={Object(errors).length}>Deletar</Styled.Button>
-                    <Styled.Button  $active={!Object(errors).length} type='submit' disabled={Object(errors).length} onClick={() => console.log('Funcionando')}>Salvar</Styled.Button>
+                    <Styled.Button  $active={!Object(errors).length} type='submit' disabled={Object(errors).length}>Salvar</Styled.Button>
             </Styled.ButtonsWrapper>
         </Styled.Form>
     )
