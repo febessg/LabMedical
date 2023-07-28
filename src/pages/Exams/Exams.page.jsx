@@ -62,22 +62,23 @@ export const ExamsPage = () => {
                 </Styled.InputGroup>
                 <Styled.Button type='submit'>Buscar</Styled.Button>
             </Styled.SearchPatient>
-            {!search ? PatientService.Get().map((patient) => {
-                return <ListPatientCardComponent
-                    key={patient.id}
-                    id={patient.id}
-                    name={patient.fullName}
-                    insurance={patient.insurance}
-                    func={registerExam(patient)}        
+            <Styled.List>
+                {!search ? PatientService.Get().map((patient) => {
+                    return <ListPatientCardComponent
+                        key={patient.id}
+                        id={patient.id}
+                        name={patient.fullName}
+                        insurance={patient.insurance}
+                        func={registerExam(patient)}
+                    />
+                }) : <ListPatientCardComponent
+                id={search.id}
+                name={search.fullName}
+                insurance={search.insurance}
+                func={registerExam(search)}
                 />
-            }) : <ListPatientCardComponent
-            id={search.id}
-            name={search.fullName}
-            insurance={search.insurance}
-            func={registerExam(search)}   
-            />
-            }
-            
+                }
+            </Styled.List>
         </Styled.Exams>
         </>
     )
