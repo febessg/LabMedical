@@ -1,11 +1,18 @@
 import PropTypes from 'prop-types';
 import * as Styled from './ListPatientCard.style';
 import {GrNext} from 'react-icons/gr';
+import { useNavigate } from 'react-router-dom';
 
-export const ListPatientCardComponent = ({key, id, name, insurance, func}) => {
+export const ListPatientCardComponent = ({key, id, name, insurance, path}) => {
+
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        navigate(path)
+    }
 
     return (
-        <Styled.ListCard key={key} onClick={func}>
+        <Styled.ListCard key={key} onClick={handleNavigate}>
             <Styled.PatientInfo>{id}</Styled.PatientInfo>
             <Styled.PatientInfo>{name}</Styled.PatientInfo>
             {insurance ? <Styled.PatientInfo>{insurance}</Styled.PatientInfo> : <Styled.PatientInfo>Sem Plano</Styled.PatientInfo>}
@@ -19,5 +26,5 @@ ListPatientCardComponent.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     insurance: PropTypes.string,
-    func: PropTypes.func.isRequired
+    path: PropTypes.string.isRequired
 }
