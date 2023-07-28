@@ -1,11 +1,10 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import {FaHandHoldingMedical, FaNotesMedical} from 'react-icons/fa';
 import {BsFillPeopleFill} from 'react-icons/bs';
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth/auth.context"
 import { UserContext } from "../../contexts/User/User.context";
 import { ToolbarContext } from "../../contexts/Toolbar/Toolbar.context";
-import { PatientsContext } from "../../contexts/Patients/Patients.context";
 import { PatientService } from "../../services/Patient/Patient.service";
 import { ToolbarComponent } from "../../components/Toolbar/Toolbar.component";
 import { InputComponent } from "../../components/Form/Input/Input.component";
@@ -25,7 +24,7 @@ export const HomePage = () => {
         reset
     } = useForm();
 
-    const {patient, setPatient} = useContext(PatientsContext);
+    const [search, setSearch] = useState();
 
     useEffect(() => {
         const newToolbar = {
@@ -36,18 +35,25 @@ export const HomePage = () => {
       }, [user.name]);
 
     const submitForm = (data) => {
-        const {name} = data;
+        const {info} = data;
 
-        const patientByName = PatientService.ShowByName(name);
+        const patientByInfo = PatientService.ShowByInfo(info);
 
-        patientByName ? setPatient(patientByName) : alert('Paciente não encontrado');
+       const patientByEmail = PatientService.ShowByEmail(info);
+
+        !patientByInfo && !patientByEmail 
+        ? alert('Paciente não encontrado') 
+        : patientByEmail 
+        ? setSearch(patientByEmail)
+        : setSearch(patientByInfo);
+
 
         reset()
     }
 
-    const getAge = (patient) => {
+    const getAge = (data) => {
         const today = new Date();
-        const birthDate = new Date(patient.birthDate);
+        const birthDate = new Date(data.birthDate);
         let age = today.getFullYear() - birthDate.getFullYear();
         const m = today.getMonth() - birthDate.getMonth();
     
@@ -57,18 +63,15 @@ export const HomePage = () => {
     
     return age;
     }
-
-    const patientAge = getAge(patient);
-
     const allPatients = PatientService.Get();
 
     const renderSearchResults = () => {
-        if (!patient) {
+        if (!search) {
             return allPatients.map((patient) => (
                 <PatientCardComponent
                   key={patient.id}
                   name={patient.fullName}
-                  age={patientAge}
+                  age={getAge(patient)}
                   contact={patient.phoneNumber}
                   healthInsurance={patient.insurance}
                 />
@@ -76,10 +79,10 @@ export const HomePage = () => {
         } else {
             return (
                 <PatientCardComponent
-                  name={patient.fullName}
-                  age={patientAge}
-                  contact={patient.phoneNumber}
-                  healthInsurance={patient.insurance}
+                  name={search.fullName}
+                  age={getAge(search)}
+                  contact={search.phoneNumber}
+                  healthInsurance={search.insurance}
                 />
               );
         }
@@ -100,9 +103,9 @@ export const HomePage = () => {
             <Styled.Search onSubmit={handleSubmit(submitForm)}>
                 <InputComponent
                     type="text"
-                    id="name"
-                    placeholder="Busque um paciente pelo nome"
-                    register={{...register('name')}}
+                    id="info"
+                    placeholder="Busque um paciente pelo nome, telefone ou email"
+                    register={{...register('info')}}
                 />
                 <Styled.Button type="submit">Buscar</Styled.Button>
             </Styled.Search>
