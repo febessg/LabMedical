@@ -8,7 +8,7 @@ export const ListPatientCardComponent = ({key, id, name, insurance, func}) => {
         <Styled.ListCard key={key} onClick={func}>
             <Styled.PatientInfo>{id}</Styled.PatientInfo>
             <Styled.PatientInfo>{name}</Styled.PatientInfo>
-            <Styled.PatientInfo>{insurance}</Styled.PatientInfo>
+            {insurance ? <Styled.PatientInfo>{insurance}</Styled.PatientInfo> : <Styled.PatientInfo>Sem Plano</Styled.PatientInfo>}
             <Styled.Icon><GrNext/></Styled.Icon>
         </Styled.ListCard>
     )
