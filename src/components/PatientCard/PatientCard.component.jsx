@@ -13,7 +13,7 @@ export const PatientCardComponent = ({name, age, contact, healthInsurance}) => {
             </Styled.PatientInfo>
             <Styled.PatientInfo>
                 <Styled.PatientContact>{contact}</Styled.PatientContact>
-                {healthInsurance ? <Styled.HealthInsurance>{healthInsurance}</Styled.HealthInsurance> : <Styled.HealthInsurance $display={'none'}>{healthInsurance}</Styled.HealthInsurance> }
+                {healthInsurance ? <Styled.HealthInsurance>{healthInsurance}</Styled.HealthInsurance> : <Styled.HealthInsurance $status={'sem'}>Sem Plano</Styled.HealthInsurance> }
             </Styled.PatientInfo>
             <Styled.Button>Ver mais</Styled.Button>
         </Styled.PatientCard>

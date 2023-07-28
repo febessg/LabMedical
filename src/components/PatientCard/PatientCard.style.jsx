@@ -56,7 +56,7 @@ export const PatientContact = styled.h2`
 `
 
 export const HealthInsurance = styled.h2`
-    color: #25232F;
+    color: ${({$status}) => {return $status === 'sem' ? '#9A95B1' : '#25232F'}} ;
     text-align: center;
 `
 
