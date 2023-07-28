@@ -40,10 +40,6 @@ export const AppointmentsPage = () => {
         reset()
     }
 
-    const registerAppointment = (data) => {
-        <FormAppointmentComponent patient={data.fullName}/>
-    }
-
     return(
         <>
         <ToolbarComponent/>
@@ -68,13 +64,13 @@ export const AppointmentsPage = () => {
                         id={patient.id}
                         name={patient.fullName}
                         insurance={patient.insurance}
-                        func={registerAppointment}
+                        path={`/appointments/${patient.id}`}
                     />
                 }) : <ListPatientCardComponent
                 id={search.id}
                 name={search.fullName}
                 insurance={search.insurance}
-                func={registerAppointment}
+                path={`/appointments/${search.id}`}
                 />
                 }
             </Styled.List>
