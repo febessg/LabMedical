@@ -6,11 +6,12 @@ export const PatientCard = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 300px;
+    width: 17rem;
     padding: 1rem;
     border-radius: 10px;
     background-color: #FFF;
     box-shadow: 0px 0px 10px 2px rgba(82, 129, 220, 0.25);
+    gap: 1rem;
 `
 
 export const TopBar = styled.div`
@@ -36,6 +37,7 @@ export const PatientInfo = styled.div`
     flex-direction: column;
     align-items: center;
     margin-bottom: 1rem;
+    height: 3rem;
 `
 
 export const PatientName = styled.h2`
