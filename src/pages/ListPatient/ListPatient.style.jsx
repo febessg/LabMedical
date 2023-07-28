@@ -10,7 +10,7 @@ export const Title = styled.h2`
     margin-bottom: 0.5rem;
 `
 
-export const SearchPatient = styled.div`
+export const SearchPatient = styled.form`
     display: flex;
     flex-direction: row;
     align-items: flex-end;
