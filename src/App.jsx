@@ -13,11 +13,13 @@ if (!LocalStorageService.get('users')) {
   LocalStorageService.set('users', [
     {
         id: 1,
+        name: 'Administrador',
         email: 'admin@labmedical.com',
         password: '12345678'
     },
     {
         id: 2,
+        name: 'Usuário',
         email: 'usuario@labmedical.com',
         password: '12345678'
     }
