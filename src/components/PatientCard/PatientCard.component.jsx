@@ -1,8 +1,15 @@
 import {BsPersonSquare} from 'react-icons/bs';
 import PropTypes from 'prop-types';
 import * as Styled from './PatientCard.style';
+import { useNavigate } from 'react-router-dom';
 
-export const PatientCardComponent = ({name, age, contact, healthInsurance}) => {
+export const PatientCardComponent = ({name, age, contact, healthInsurance, id}) => {
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        navigate(`/medical-record/${id}`)
+    }
+
     return (
         <Styled.PatientCard>
             <Styled.TopBar></Styled.TopBar>
@@ -15,7 +22,7 @@ export const PatientCardComponent = ({name, age, contact, healthInsurance}) => {
                 <Styled.PatientContact>{contact}</Styled.PatientContact>
                 {healthInsurance ? <Styled.HealthInsurance>{healthInsurance}</Styled.HealthInsurance> : <Styled.HealthInsurance $status={'sem'}>Sem Plano</Styled.HealthInsurance> }
             </Styled.PatientInfo>
-            <Styled.Button>Ver mais</Styled.Button>
+            <Styled.Button onClick={handleNavigate}>Ver mais</Styled.Button>
         </Styled.PatientCard>
     )
 }

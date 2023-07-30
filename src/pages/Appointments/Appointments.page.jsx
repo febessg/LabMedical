@@ -5,7 +5,6 @@ import { ToolbarComponent } from "../../components/Toolbar/Toolbar.component";
 import { useContext, useEffect, useState } from "react";
 import { ToolbarContext } from "../../contexts/Toolbar/Toolbar.context";
 import { UserContext } from "../../contexts/User/User.context";
-import { FormAppointmentComponent } from "../../components/Form/Appointment/Appointment.component";
 import { useForm } from "react-hook-form";
 import { PatientService } from "../../services/Patient/Patient.service";
 import { ListPatientCardComponent } from "../../components/ListPatientCard/ListPatientCard.component";

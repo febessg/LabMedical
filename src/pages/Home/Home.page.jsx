@@ -74,6 +74,7 @@ export const HomePage = () => {
                   age={getAge(patient)}
                   contact={patient.phoneNumber}
                   healthInsurance={patient.insurance}
+                  id={patient.id}
                 />
               ));
         } else {
@@ -83,6 +84,7 @@ export const HomePage = () => {
                   age={getAge(search)}
                   contact={search.phoneNumber}
                   healthInsurance={search.insurance}
+                  id={search.id}
                 />
               );
         }
