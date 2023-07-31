@@ -8,8 +8,6 @@ import { useNavigate } from 'react-router-dom';
 export const FormAppointmentComponent = ({patient}) => {
     const navigate = useNavigate();
 
-    const [appointment, setAppointment] = useState();
-
     const {
         register,
         handleSubmit,
@@ -17,13 +15,23 @@ export const FormAppointmentComponent = ({patient}) => {
     } = useForm();
 
     const submitForm = (data) => {
-        console.log(data)
-        setAppointment(data);
         const patientLocal = PatientService.ShowByName(patient);
 
+        const newAppointment = {
+            id: patientLocal.appointments.length + 1,
+            ...data
+        }
+
+        const updatedAppointment = [...patientLocal.appointments, newAppointment]
+
+       const newData = {
+            ...patientLocal,
+            appointments: updatedAppointment
+       }
+        
         const {id} = patientLocal;
 
-        PatientService.Update(id, appointment)
+        PatientService.Update(id, newData)
 
         navigate(`/medical-record/${id}`)
     }

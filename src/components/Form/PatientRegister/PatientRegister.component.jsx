@@ -54,8 +54,16 @@ export const FormPatientRegisterComponent = () => {
             return
         }
 
-        PatientService.Create(data);
-        navigate('/medical-record')
+        const newPatient = {
+            appointments: [],
+            exams: [],
+            ...data
+        }
+
+        PatientService.Create(newPatient);
+
+        const {id} = PatientService.ShowByCpf(cpf)
+        navigate(`/medical-record/${id}`)
     }
         
     return (
