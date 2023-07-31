@@ -33,8 +33,8 @@ export const InputComponent = ({label, type, id, placeholder, options, register,
                     }
 
                     {type === 'select' &&
-                        <Styled.Select $color={error && 'danger'}  id={id} {...register}>
-                            <option value="default" selected disabled hidden> </option>
+                        <Styled.Select defaultValue={'default'} $color={error && 'danger'}  id={id} {...register}>
+                            <option value="default" disabled hidden> </option>
                             {options.map((option) => (
                                 <option key={option.value} value={option.value}>
                                     {option.label}
