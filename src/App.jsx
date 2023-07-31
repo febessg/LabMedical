@@ -24,28 +24,10 @@ if (!LocalStorageService.get('users')) {
         email: 'usuario@labmedical.com',
         password: '12345678'
     }
-]
-)
-}
+])};
 
 if (!LocalStorageService.get('patients')) {
-  LocalStorageService.set('patients', [
-    {
-        id: 1,
-        gender: 'Feminino',
-        fullName: 'Jane Doe',
-        birthDate: '1997-09-07',
-        cpf: '777.777.777-77',
-        rg: '0937738',
-        maritalStatus: 'Casado',
-        email: 'janedoe@labmedical.com',
-        phoneNumber: '(99) 9 9999-9999',
-        naturality: 'Brasileira',
-        emergencyContact: '(99) 9 9999-9999'
-    }
-]
-)
-}
+  LocalStorageService.set('patients', [])};
 
 function App() {
   return (

@@ -2,7 +2,6 @@ import { useForm } from 'react-hook-form';
 import { InputComponent } from '../Input/Input.component';
 import * as Styled from './Appointment.style';
 import { PatientService } from '../../../services/Patient/Patient.service';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const FormAppointmentComponent = ({patient}) => {
