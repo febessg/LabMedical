@@ -29,7 +29,7 @@ export const PatientCardComponent = ({name, age, contact, healthInsurance, id}) 
 
 PatientCardComponent.propTypes = {
     name: PropTypes.string.isRequired,
-    age: PropTypes.func.isRequired,
+    age: PropTypes.number.isRequired,
     contact: PropTypes.string.isRequired,
     healthInsurance: PropTypes.string
 }
