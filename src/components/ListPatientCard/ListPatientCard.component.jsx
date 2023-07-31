@@ -3,7 +3,7 @@ import * as Styled from './ListPatientCard.style';
 import {GrNext} from 'react-icons/gr';
 import { useNavigate } from 'react-router-dom';
 
-export const ListPatientCardComponent = ({key, id, name, insurance, path}) => {
+export const ListPatientCardComponent = ({id, name, insurance, path}) => {
 
     const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ export const ListPatientCardComponent = ({key, id, name, insurance, path}) => {
     }
 
     return (
-        <Styled.ListCard key={key} onClick={handleNavigate}>
+        <Styled.ListCard onClick={handleNavigate}>
             <Styled.PatientInfo>{id}</Styled.PatientInfo>
             <Styled.PatientInfo>{name}</Styled.PatientInfo>
             {insurance ? <Styled.PatientInfo>{insurance}</Styled.PatientInfo> : <Styled.PatientInfo>Sem Plano</Styled.PatientInfo>}
@@ -22,7 +22,6 @@ export const ListPatientCardComponent = ({key, id, name, insurance, path}) => {
 };
 
 ListPatientCardComponent.propTypes = {
-    key: PropTypes.number,
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     insurance: PropTypes.string,
