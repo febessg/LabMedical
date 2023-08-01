@@ -4,7 +4,7 @@ import * as Styled from './Exams.style';
 export const FormExamsComponent = ({patient}) => {
     return (
         <Styled.Form>
-            <Styled.Title>Exame de {patient}</Styled.Title>
+            <Styled.Title>Exame de {patient.fullName}</Styled.Title>
             <Styled.InputRow>
                     <InputComponent
                         label='Nome do Exame'
