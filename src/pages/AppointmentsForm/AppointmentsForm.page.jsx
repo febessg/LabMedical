@@ -27,7 +27,7 @@ export const AppointmentsFormPage = () => {
             <ToolbarComponent/>
             <Styled.AppointmentForm>
                 <Styled.Title>Preencha os campos para cadastrar</Styled.Title>
-                <FormAppointmentComponent patient={patient.fullName}/>
+                <FormAppointmentComponent patient={patient}/>
             </Styled.AppointmentForm>
             
         </>

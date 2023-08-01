@@ -37,9 +37,9 @@ const Delete = (id) => {
     LocalStorageService.set('patients', Get().filter(patient => patient.id !== id));
  };
 
- const Update = (id, data) => {
+ const Update = (id, newData) => {
     const patients = Get();
-    patients[patients.find(patient => patient.id === id).indexOf] = data;
+    patients[patients.find(patient => patient.id === id).indexOf] = newData;
     LocalStorageService.set('patients', patients)
 };
 

@@ -14,7 +14,7 @@ export const MedicalRecordPage = () => {
 
     useEffect(() => {
         const newToolbar = {
-          title: 'Cadastrar Consultas',
+          title: 'Prontuário',
           userName: user.name
         };
         setToolbar(newToolbar);

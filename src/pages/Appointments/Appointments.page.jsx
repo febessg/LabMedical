@@ -57,9 +57,9 @@ export const AppointmentsPage = () => {
                 <Styled.Button type="submit">Buscar</Styled.Button>
             </Styled.SearchPatient>
             <Styled.List>
-                {!search ? PatientService.Get().map((patient) => {
+                {!search ? PatientService.Get().map((patient, index) => {
                     return <ListPatientCardComponent
-                        key={patient.id}
+                        key={index}
                         id={patient.id}
                         name={patient.fullName}
                         insurance={patient.insurance}
