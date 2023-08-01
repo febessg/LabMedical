@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { InputComponent } from '../Input/Input.component';
 import * as Styled from './Appointment.style';
-import { PatientService } from '../../../services/Patient/Patient.service';
+import { AppointmentService } from '../../../services/Appointment/Appointment.service.jsx';
 import { useNavigate } from 'react-router-dom';
 
 export const FormAppointmentComponent = ({patient}) => {
@@ -14,30 +14,21 @@ export const FormAppointmentComponent = ({patient}) => {
     } = useForm();
 
     const submitForm = (data) => {
-        const patientLocal = PatientService.ShowByName(patient);
-
-        const newAppointment = {
-            id: patientLocal.appointments.length + 1,
+    
+       const appointment = {
+            patientId: patient.id,
+            patientName: patient.fullName,
             ...data
-        }
+       };
 
-        const updatedAppointment = [...patientLocal.appointments, newAppointment]
+       AppointmentService.Create(appointment);
 
-       const newData = {
-            ...patientLocal,
-            appointments: updatedAppointment
-       }
-        
-        const {id} = patientLocal;
-
-        PatientService.Update(id, newData)
-
-        navigate(`/medical-record/${id}`)
+        navigate(`/medical-record/${patient.id}`)
     }
 
     return (
         <Styled.Form onSubmit={handleSubmit(submitForm)}>
-            <Styled.Title>Consulta de {patient}</Styled.Title>
+            <Styled.Title>Consulta de {patient.fullName}</Styled.Title>
             <Styled.InputRow>
                     <InputComponent
                         label='Motivo da Consulta'
