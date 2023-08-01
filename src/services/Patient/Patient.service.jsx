@@ -25,8 +25,8 @@ const ShowByInfo = (info) => {
     return Get().find(patient => patient.fullName.includes(info) || patient.phoneNumber === info)
 }
 
-const ShowByName = (name) => {
-    return Get().find(patient => patient.fullName.includes(name))
+const ShowByName = (name = '') => {
+    return Get().filter(patient => patient.fullName.includes(name))
 }
 
 const ShowByCpf = (cpf) => {
