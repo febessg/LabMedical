@@ -87,13 +87,15 @@ export const ListPatientPage = () => {
                     func={openMedicalRecord}
                     path={`/medical-record/${patient.id}`}        
                 />
-                }) : <ListPatientCardComponent
-                id={search.id}
-                name={search.fullName}
-                insurance={search.insurance}
+                }) : search.map((patient) => 
+                    <ListPatientCardComponent
+                id={patient?.id}
+                name={patient?.fullName}
+                insurance={patient?.insurance}
                 func={openMedicalRecord}
-                path={`/medical-record/${search.id}`}   
+                path={`/medical-record/${patient?.id}`}   
                 />
+                ) 
                 }
             </Styled.List>
         </Styled.ListPage>
