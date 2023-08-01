@@ -5,10 +5,8 @@ import { UserContext } from "../../contexts/User/User.context";
 import * as Styled from './Exams.style';
 import { InputComponent } from "../../components/Form/Input/Input.component";
 import { FaSearch } from "react-icons/fa";
-import { FormExamsComponent } from "../../components/Form/Exams/Exams.component";
 import { useForm } from "react-hook-form";
 import { PatientService } from "../../services/Patient/Patient.service";
-import { PatientCardComponent } from "../../components/PatientCard/PatientCard.component";
 import { ListPatientCardComponent } from "../../components/ListPatientCard/ListPatientCard.component";
 
 export const ExamsPage = () => {
@@ -41,10 +39,6 @@ export const ExamsPage = () => {
         reset()
     }
 
-    const registerExam = (data) => {
-        <FormExamsComponent patient={data.fullName}/>
-    }
-
     return (
         <>
             <ToolbarComponent/>
@@ -63,19 +57,19 @@ export const ExamsPage = () => {
                 <Styled.Button type='submit'>Buscar</Styled.Button>
             </Styled.SearchPatient>
             <Styled.List>
-                {!search ? PatientService.Get().map((patient) => {
+                {!search ? PatientService.Get().map((patient, index) => {
                     return <ListPatientCardComponent
-                        key={patient.id}
+                        key={index}
                         id={patient.id}
                         name={patient.fullName}
                         insurance={patient.insurance}
-                        func={registerExam(patient)}
+                        path={`/exams/${patient.id}`}
                     />
                 }) : <ListPatientCardComponent
                 id={search.id}
                 name={search.fullName}
                 insurance={search.insurance}
-                func={registerExam(search)}
+                path={`/exams/${search.id}`}
                 />
                 }
             </Styled.List>
