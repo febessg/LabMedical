@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { InputComponent } from '../Input/Input.component';
 import * as Styled from './Exams.style';
 import { useForm } from 'react-hook-form';
+import { ExamsService } from '../../../services/Exams/Exams.service';
 
 export const FormExamsComponent = ({patient}) => {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ export const FormExamsComponent = ({patient}) => {
             ...data
         };
 
-        console.log(exam)
+        ExamsService.Create(exam);
 
         navigate(`/medical-record/${patient.id}`)
     };

@@ -33,6 +33,9 @@ if (!LocalStorageService.get('patients')) {
 if (!LocalStorageService.get('appointments')) {
   LocalStorageService.set('appointments', [])};
 
+if (!LocalStorageService.get('exams')) {
+    LocalStorageService.set('exams', [])};
+
 function App() {
   return (
     <Router>
