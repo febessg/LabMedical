@@ -44,7 +44,7 @@ export const ItemContent = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    
+
     border-radius: 10px;
     background-color: #FFF;
     box-shadow: 0px 0px 10px 2px rgba(82, 129, 220, 0.25);
@@ -56,6 +56,7 @@ export const ItemContent = styled.div`
 `
 
 export const Info = styled.div`
+    width: 100%;
 `
 
 export const DateTime = styled.div`
@@ -83,6 +84,7 @@ export const Exam = styled.div`
     flex-direction: column;
     gap: 0.5rem;
     text-align: justify;
+    width: 100%;
 `
 
 export const Button = styled.button`
