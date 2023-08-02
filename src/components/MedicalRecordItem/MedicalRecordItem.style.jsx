@@ -7,6 +7,7 @@ export const MedicalRecordItem = styled.div`
     margin-top: 3rem;
     padding-bottom: 1rem;
     border-left: .2rem solid #159976;
+    min-width: 360px;
     
 `
 
@@ -55,6 +56,33 @@ export const ItemContent = styled.div`
 `
 
 export const Info = styled.div`
+`
+
+export const DateTime = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #159976;
+    }
+`
+
+export const Appointment = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: justify;
+`
+
+export const Exam = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: justify;
 `
 
 export const Button = styled.button`

@@ -19,3 +19,7 @@ export const PatientInfos = styled.h3`
     color: #25232F;
     margin-bottom: 0.3rem;
 `
+
+export const HistoryContainer = styled.div`
+    margin: 0 2rem;
+`
