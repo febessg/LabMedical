@@ -2,16 +2,19 @@ import { useContext, useEffect, useState } from "react"
 import {FaHandHoldingMedical, FaNotesMedical} from 'react-icons/fa';
 import {BsFillPeopleFill} from 'react-icons/bs';
 import { Navigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { AuthContext } from "../../contexts/auth/auth.context"
 import { UserContext } from "../../contexts/User/User.context";
 import { ToolbarContext } from "../../contexts/Toolbar/Toolbar.context";
 import { PatientService } from "../../services/Patient/Patient.service";
+import { AppointmentService } from "../../services/Appointment/Appointment.service";
+import { ExamsService } from "../../services/Exams/Exams.service";
 import { ToolbarComponent } from "../../components/Toolbar/Toolbar.component";
 import { InputComponent } from "../../components/Form/Input/Input.component";
 import { StatisticCardComponent } from "../../components/StatisticCard/StatisticCard.component";
 import { PatientCardComponent } from "../../components/PatientCard/PatientCard.component";
 import * as Styled from "./Home.style";
-import { useForm } from "react-hook-form";
+
 
 export const HomePage = () => {
     const {auth} = useContext(AuthContext);
@@ -89,6 +92,9 @@ export const HomePage = () => {
               );
         }
       };
+
+      const totalAppointments = AppointmentService.Get();
+      const totalExams = ExamsService.Get();
     
     const render = () => {
         return (
@@ -97,9 +103,9 @@ export const HomePage = () => {
         <Styled.HomePage>
             <Styled.Titles>Estatísticas do sistema</Styled.Titles>
             <Styled.Statistics>
-                 <StatisticCardComponent icon={<BsFillPeopleFill/>} value={5} title="Pacientes"/>
-                <StatisticCardComponent icon={<FaHandHoldingMedical/>} value={5} title="Consultas"/>
-                <StatisticCardComponent icon={<FaNotesMedical/>} value={5} title="Exames"/>
+                 <StatisticCardComponent icon={<BsFillPeopleFill/>} value={allPatients.length} title="Pacientes"/>
+                <StatisticCardComponent icon={<FaHandHoldingMedical/>} value={totalAppointments.length} title="Consultas"/>
+                <StatisticCardComponent icon={<FaNotesMedical/>} value={totalExams.length} title="Exames"/>
             </Styled.Statistics>
             <Styled.Titles>Informações Rápidas de Pacientes</Styled.Titles>
             <Styled.Search onSubmit={handleSubmit(submitForm)}>
