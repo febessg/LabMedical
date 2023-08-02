@@ -82,13 +82,15 @@ export const HomePage = () => {
               ));
         } else {
             return (
-                <PatientCardComponent
-                  name={search.fullName}
-                  age={getAge(search)}
-                  contact={search.phoneNumber}
-                  healthInsurance={search.insurance}
-                  id={search.id}
+               search.map((patient) => 
+               <PatientCardComponent
+                  name={patient.fullName}
+                  age={getAge(patient)}
+                  contact={patient.phoneNumber}
+                  healthInsurance={patient.insurance}
+                  id={patient.id}
                 />
+               ) 
               );
         }
       };

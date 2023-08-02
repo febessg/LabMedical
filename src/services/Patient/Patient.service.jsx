@@ -22,7 +22,7 @@ const ShowByEmail = (email) => {
 };
 
 const ShowByInfo = (info) => {
-    return Get().find(patient => patient.fullName.includes(info) || patient.phoneNumber === info)
+    return Get().filter(patient => patient.fullName.includes(info) || patient.phoneNumber === info)
 }
 
 const ShowByName = (name = '') => {
