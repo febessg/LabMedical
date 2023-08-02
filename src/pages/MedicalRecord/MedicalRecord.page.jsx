@@ -6,6 +6,8 @@ import * as Styled from './MedicalRecord.style';
 import { MedicalRecordItemComponent } from "../../components/MedicalRecordItem/MedicalRecordItem.component";
 import { useParams } from "react-router-dom";
 import { PatientService } from "../../services/Patient/Patient.service";
+import { AppointmentService } from "../../services/Appointment/Appointment.service";
+import { ExamsService } from "../../services/Exams/Exams.service";
 
 export const MedicalRecordPage = () => {
     const {id} = useParams();
@@ -21,8 +23,18 @@ export const MedicalRecordPage = () => {
       }, [user.name]);
 
     const patient = PatientService.Show(id);
-
     
+    
+        const appointments = AppointmentService.ShowByPatientId(patient.id);
+        const exams = ExamsService.ShowByPatientId(patient.id);
+
+        const patientHistory = appointments.concat(exams);
+
+        const sortByDate = (items) => {
+            return items.sort((a, b) => (new Date(b.date) - new Date(a.date)));
+          };        
+
+        const sortedHistory = sortByDate(patientHistory);
     return (
         <>
         <ToolbarComponent/>
@@ -34,8 +46,16 @@ export const MedicalRecordPage = () => {
                     <Styled.PatientInfos><strong>Alergias:</strong> {patient.allergies ? patient.allergies : 'NA'}</Styled.PatientInfos>
                     <Styled.PatientInfos><strong>Cuidados específicos:</strong> {patient.specialCares ? patient.specialCares : 'NA'}</Styled.PatientInfos>
                 </Styled.Container>
-                <MedicalRecordItemComponent id={1} title={'Consulta'}/>
-                <MedicalRecordItemComponent id={2} title={'Exame'}/>
+                <Styled.HistoryContainer>
+                    {sortedHistory.map((item, index) =>
+                        <MedicalRecordItemComponent
+                            key={index}
+                            id={item.id}
+                            title={item.description ? 'Consulta' : 'Exame'}
+                            order={index + 1}
+                        />
+                    )}
+                </Styled.HistoryContainer>
             </Styled.MedicalRecord>
         </>
     )
