@@ -82,8 +82,9 @@ export const HomePage = () => {
               ));
         } else {
             return (
-               search.map((patient) => 
+               search.map((patient, index) => 
                <PatientCardComponent
+                  key={patient.id}
                   name={patient.fullName}
                   age={getAge(patient)}
                   contact={patient.phoneNumber}
