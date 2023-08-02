@@ -57,6 +57,26 @@ export const ItemContent = styled.div`
 export const Info = styled.div`
 `
 
+export const Date = styled.div`
+    align-self: flex-end;
+    font-weight: 700;
+    color: #159976;
+`
+
+export const Appointment = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: justify;
+`
+
+export const Exam = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: justify;
+`
+
 export const Button = styled.button`
     align-self: flex-end;
      padding: 8px 16px;

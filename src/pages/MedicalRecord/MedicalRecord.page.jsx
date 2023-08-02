@@ -46,14 +46,16 @@ export const MedicalRecordPage = () => {
                     <Styled.PatientInfos><strong>Alergias:</strong> {patient.allergies ? patient.allergies : 'NA'}</Styled.PatientInfos>
                     <Styled.PatientInfos><strong>Cuidados específicos:</strong> {patient.specialCares ? patient.specialCares : 'NA'}</Styled.PatientInfos>
                 </Styled.Container>
-                {sortedHistory.map((item, index) => 
-                    <MedicalRecordItemComponent 
-                        key={index}
-                        id={item.id} 
-                        title={item.description ? 'Consulta' : 'Exame'}
-                        order={index + 1}
-                    />
-                )}
+                <Styled.HistoryContainer>
+                    {sortedHistory.map((item, index) =>
+                        <MedicalRecordItemComponent
+                            key={index}
+                            id={item.id}
+                            title={item.description ? 'Consulta' : 'Exame'}
+                            order={index + 1}
+                        />
+                    )}
+                </Styled.HistoryContainer>
             </Styled.MedicalRecord>
         </>
     )
