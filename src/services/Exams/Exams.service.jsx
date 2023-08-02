@@ -18,7 +18,7 @@ const Show = (id) => {
 };
 
 const ShowByPatientId = (id) => {
-    return Get().find(exam => exam.patientId === id)
+    return Get().filter(exam => exam.patientId === id)
 };
 
 const ShowByPatientName = (name = '') => {
