@@ -31,7 +31,7 @@ export const MedicalRecordPage = () => {
         const patientHistory = appointments.concat(exams);
 
         const sortByDate = (items) => {
-            return items.sort((a, b) => new Date(a.data) - new Date(b.data));
+            return items.sort((a, b) => (new Date(b.date) - new Date(a.date)));
           };        
 
         const sortedHistory = sortByDate(patientHistory);
@@ -51,6 +51,7 @@ export const MedicalRecordPage = () => {
                         key={index}
                         id={item.id} 
                         title={item.description ? 'Consulta' : 'Exame'}
+                        order={index + 1}
                     />
                 )}
             </Styled.MedicalRecord>
