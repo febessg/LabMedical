@@ -1,7 +1,5 @@
 import { AppointmentService } from '../../services/Appointment/Appointment.service';
 import { ExamsService } from '../../services/Exams/Exams.service';
-import { AppointmentService } from '../../services/Appointment/Appointment.service';
-import { ExamsService } from '../../services/Exams/Exams.service';
 import * as Styled from './MedicalRecordItem.style';
 import PropTypes from 'prop-types';
 
