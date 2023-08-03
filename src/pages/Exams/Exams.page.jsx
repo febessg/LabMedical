@@ -65,12 +65,15 @@ export const ExamsPage = () => {
                         insurance={patient.insurance}
                         path={`/exams/${patient.id}`}
                     />
-                }) : <ListPatientCardComponent
-                id={search.id}
-                name={search.fullName}
-                insurance={search.insurance}
-                path={`/exams/${search.id}`}
+                }) : search.map((patient) =>
+                <ListPatientCardComponent
+                key={patient.id}
+                id={patient.id}
+                name={patient.fullName}
+                insurance={patient.insurance}
+                path={`/exams/${patient.id}`}
                 />
+            ) 
                 }
             </Styled.List>
         </Styled.Exams>
